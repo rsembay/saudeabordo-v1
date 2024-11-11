@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reg.Ativid–Anotações</title>
+  <link rel="stylesheet" type="text/css" href="/css/RegAtividAnotaes.css"/>
+  <script type="text/javascript" src="/js/RegAtividAnotaes.js"></script>
+</head>
+<body>
+<div class="container">
+  <div id="RegAtividAnotacoes">
+    <!-- Seção do Topo com Identificação do Usuário -->
+    <section id="top-section">
+      <div class="top-container">
+        <!-- Botão de Voltar -->
+        <button id="back-button" onclick="window.location.href='Principal__Registro_de_Atividades.html'">Voltar</button>
+        
+        <!-- Identificação do Usuário -->
+        <div id="user-info">
+          <span id="user-name">Luma Assis</span>
+          <img id="user-photo" src="/img/User ID.svg" alt="User Photo">
+        </div>
+      </div>
+    </section>
+    
+    <!-- Main Content -->
+    <div id="aac" class="section-title">
+      <span>Registrar Anotações</span>
+    </div>
+    
+    <div id="aad" class="section-description">
+      <span>Insira informações complementares sobre sua rotina, dificuldades de implementar algum hábito ou reações a medicamentos.</span>
+    </div>
+
+    <!-- Formulário de Anotações -->
+    <section id="form-section">
+      <!-- Campo de Data -->
+      <div class="form-field">
+        <label for="data">Data</label>
+        <input type="date" id="data" name="data">
+      </div>
+
+      <!-- Campo de Referência -->
+      <div class="form-field">
+        <label for="referencia">Referência (Exercício, Alimentação, Medicação)</label>
+        <select id="referencia" name="referencia">
+          <option value="exercicio">Exercício</option>
+          <option value="alimentacao">Alimentação</option>
+          <option value="medicacao">Medicação</option>
+        </select>
+      </div>
+
+      <!-- Campo de Anotações -->
+      <div class="form-field">
+        <label for="anotacoes">Anotações</label>
+        <textarea id="anotacoes" name="anotacoes" placeholder="Digite suas anotações aqui..."></textarea>
+      </div>
+
+      <!-- Botões -->
+      <div class="form-buttons">
+        <button class="cancel-btn" onclick="application.goToTargetView(event)">Cancelar</button>
+        <button class="add-btn" onclick="application.goToTargetView(event)">Adicionar</button>
+      </div>
+    </section>
+  </div>
+</div>
+</body>
+</html>

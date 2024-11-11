@@ -1,0 +1,144 @@
+/* Reset global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Fredoka', sans-serif;
+    background-image: url('/img/saude-a-bordo-bg.png'); /* Imagem de fundo padrão */
+	background-color: #fff;
+}
+
+/* Container principal */
+#RegAtividSolicitarAcompanhamento-Enviar {
+    width: 430px;
+    height: auto;
+    position: relative;
+    padding: 30px;
+    margin: 100px auto 30px auto; /* Adicionando 100px de margem superior */
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+}
+
+/* Topo da página com a identificação do usuário */
+#top-section {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#back-button {
+    padding: 12px 20px;
+    font-family: 'Fredoka';
+    color: var(--cor-placeholder);
+    background-color: #fff;
+    border: 1px solid var(--cor-placeholder);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#back-button:hover {
+    background-color: #52A78E;
+    color: white;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+}
+
+#user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#user-name {
+    font-size: 18px;
+    color: var(--cor-textos);
+}
+
+/* Botão Cancelar */
+.cancel-button {
+    width: 90px;
+    height: 29px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d0d0d0;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.button-text {
+    font-size: 16px;
+    color: white;
+}
+
+/* Título */
+.title {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(112,112,112,1);
+    margin-bottom: 20px;
+}
+
+/* Caixa Azul Claro com o formulário */
+.form-container {
+    background-color: rgba(82, 167, 110, 0.1); /* Azul claro */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+.input-container input, .input-container select {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.input-container input:focus, .input-container select:focus {
+    border-color: #52A78E;
+    outline: none;
+}
+
+/* Botão Enviar */
+.submit-button {
+    margin-top: 20px;
+}
+
+.botao-compartilhar {
+    background-color: #52A78E;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    width: 100%;
+    border-style: none;
+}
+
+.botao-compartilhar:hover {
+    background-color: #4B4E6D;
+    color: #fff;
+}

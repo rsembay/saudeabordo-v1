@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reg.Ativid–Medicação_Cadastrar-Medicacao1</title>
+  <link rel="stylesheet" type="text/css" href="/css/RegAtividMedicao_Cadastrar-Medicacao1.css">
+  <script type="text/javascript" src="Reg.js"></script>
+</head>
+<body>
+
+  <div id="RegAtividMedicao_Cadastrar-Medicacao1">
+    <section id="form-section">
+      <!-- Seção do Topo com Identificação do Usuário -->
+      <section id="top-section">
+        <div class="top-container">
+          <!-- Botão de Voltar -->
+          <button id="back-button" onclick="window.location.href='Principal__Registro_de_Atividades.html'">Voltar</button>
+
+          <!-- Identificação do Usuário -->
+          <div id="user-info">
+            <span id="user-name">Luma Assis</span>
+            <img id="user-photo" src="/img/User ID.svg" alt="User Photo">
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <div id="aau" class="section-title">
+        <span>Configure seus Medicamentos</span>
+      </div>
+      <div id="aav" class="section-description">
+        <span>Controle todos os seus medicamentos em apenas um lugar</span>
+      </div>
+      <div id="aaw" class="section-info">
+        <span>Defina horários e receba lembretes.</span>
+      </div>
+      <div id="aax" class="privacy-note">
+        <span>As informações sobre medicamentos são protegidas e não podem ser lidas por ninguém, sem a sua permissão.</span>
+      </div>
+
+      <!-- Medication Form -->
+      <div id="abu" class="form-container">
+        <div class="form-field">
+          <label for="med-name">Nome do Medicamento</label>
+          <input type="text" id="med-name" placeholder="Nome do Medicamento">
+        </div>
+
+        <!-- Form for selecting Formas -->
+        <div class="form-field">
+          <label for="forma">Forma</label>
+          <select id="forma">
+            <option value="capsula">Cápsula</option>
+            <option value="comprimido">Comprimido</option>
+            <option value="liquido">Líquido</option>
+            <option value="topico">Tópico</option>
+            <option value="adesivo">Adesivo</option>
+            <option value="creme">Creme</option>
+            <option value="dispositivo">Dispositivo</option>
+            <option value="espuma">Espuma</option>
+            <option value="gel">Gel</option>
+            <option value="gotas">Gotas</option>
+            <option value="inalador">Inalador</option>
+            <option value="injeção">Injeção</option>
+            <option value="loco">Loção</option>
+            <option value="pomada">Pomada</option>
+            <option value="po">Pó</option>
+            <option value="spray">Spray</option>
+            <option value="supositorio">Supositório</option>
+          </select>
+        </div>
+
+        <!-- Form for selecting Intensidade (Open, Numeric) -->
+        <div class="form-field">
+          <label for="intensidade">Intensidade</label>
+          <input type="number" id="intensidade" placeholder="Informe a intensidade" min="1" step="1">
+        </div>
+
+        <!-- Form for selecting Unidade -->
+        <div class="form-field">
+          <label for="unidade">Unidade</label>
+          <select id="unidade">
+            <option value="mg">mg</option>
+            <option value="mcg">mcg</option>
+            <option value="g">g</option>
+            <option value="ml">mL</option>
+            <option value="%">%</option>
+          </select>
+        </div>
+
+        <!-- Form for selecting Frequência -->
+        <div class="form-field">
+          <label for="frequencia">Frequência</label>
+          <select id="frequencia">
+            <option value="intervalos_regulares">Em intervalos regulares</option>
+            <option value="dias_especificos">Em dias específicos da semana</option>
+            <option value="uso_esporadico">Uso esporádico</option>
+          </select>
+        </div>
+
+        <!-- Form for selecting Intervalo -->
+        <div class="form-field">
+          <label for="intervalo">Intervalo</label>
+          <select id="intervalo">
+            <option value="dia">Dia</option>
+            <option value="a_cada_dois_dias">A cada dois dias</option>
+            <option value="3_dias">3 dias</option>
+            <option value="4_dias">4 dias</option>
+            <option value="5_dias">5 dias</option>
+            <option value="6_dias">6 dias</option>
+            <option value="7_dias">7 dias</option>
+            <option value="14_dias">14 dias</option>
+            <option value="21_dias">21 dias</option>
+            <option value="28_dias">28 dias</option>
+          </select>
+        </div>
+
+        <!-- Submit & Cancel Buttons -->
+        <div class="form-buttons">
+          <button class="cancel-btn" onclick="application.goToTargetView(event)">Cancelar</button>
+          <button class="add-btn" onclick="application.goToTargetView(event)">Adicionar</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,3144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sem conexão de internet</title>
+<style id="applicationStylesheet" type="text/css">
+	.mediaViewInfo {
+		--web-view-name: Sem conexão de internet;
+		--web-view-id: Sem_conexo_de_internet;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: Sem_conexo_de_internet;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	@keyframes  {
+	
+	
+	}
+	#Sem_conexo_de_internet {
+		position: absolute;
+		width: 430px;
+		height: 932px;
+		background-color: rgba(255,255,255,1);
+		overflow: hidden;
+		--web-animation: fadein undefineds undefined;
+		--web-action-type: page;
+		--web-action-target: Caixa_de_Texto_Ativa.html;
+		cursor: pointer;
+		--web-view-name: Sem conexão de internet;
+		--web-view-id: Sem_conexo_de_internet;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	#aui {
+		border: 0;
+		left: 47px;
+		top: 510px;
+		position: absolute;
+		overflow: visible;
+		width: 337px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Fredoka;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(112,112,112,1);
+	}
+	#auj {
+		position: absolute;
+		width: 136px;
+		height: 238px;
+		left: 147px;
+		top: 228px;
+		overflow: visible;
+	}
+	#auk {
+		position: absolute;
+		width: 136px;
+		height: 238px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#aul {
+		position: absolute;
+		width: 136px;
+		height: 238px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#aum {
+		position: absolute;
+		width: 70px;
+		height: 142px;
+		left: 23px;
+		top: 0px;
+		overflow: visible;
+	}
+	#aun {
+		fill: rgba(219,234,223,1);
+	}
+	.aun {
+		overflow: visible;
+		position: absolute;
+		width: 70px;
+		height: 142px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#auo {
+		fill: rgba(197,207,214,1);
+	}
+	.auo {
+		overflow: visible;
+		position: absolute;
+		width: 22px;
+		height: 129px;
+		left: 21px;
+		top: 9px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#aup {
+		position: absolute;
+		width: 104px;
+		height: 178px;
+		left: 32px;
+		top: 10px;
+		overflow: visible;
+	}
+	#auq {
+		fill: rgba(219,234,223,1);
+	}
+	.auq {
+		overflow: visible;
+		position: absolute;
+		width: 104px;
+		height: 178px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#aur {
+		fill: rgba(197,207,214,1);
+	}
+	.aur {
+		overflow: visible;
+		position: absolute;
+		width: 55px;
+		height: 160px;
+		left: 32px;
+		top: 13px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#aus {
+		position: absolute;
+		width: 83px;
+		height: 127px;
+		left: 0px;
+		top: 56px;
+		overflow: visible;
+	}
+	#aut {
+		fill: rgba(219,234,223,1);
+	}
+	.aut {
+		overflow: visible;
+		position: absolute;
+		width: 83px;
+		height: 127px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#auu {
+		fill: rgba(175,185,197,1);
+	}
+	.auu {
+		overflow: visible;
+		position: absolute;
+		width: 52px;
+		height: 112px;
+		left: 18px;
+		top: 14px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#auv {
+		fill: rgba(107,203,239,1);
+	}
+	.auv {
+		overflow: visible;
+		position: absolute;
+		width: 78px;
+		height: 58px;
+		left: 28px;
+		top: 180px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+</style>
+<script id="applicationScript">
+if (window.console==null) { window["console"] = { log : function() {} } }; // some browsers do not set console
+
+// Scaling, showing by media query and navigation between multiple pages on a single page. Code subject to change.
+
+var Application = function() {
+	this.prefix = "--web-";
+	this.NAVIGATION_CHANGE = "viewChange";
+	this.VIEW_NOT_FOUND = "viewNotFound";
+	this.VIEW_CHANGE = "viewChange";
+	this.VIEW_CHANGING = "viewChanging";
+	this.STATE_NOT_FOUND = "stateNotFound";
+	this.APPLICATION_COMPLETE = "applicationComplete";
+	this.APPLICATION_RESIZE = "applicationResize";
+	this.SIZE_STATE_NAME = "data-is-view-scaled";
+	this.STATE_NAME = this.prefix + "state";
+
+	this.lastTrigger = null;
+	this.lastView = null;
+	this.lastState = null;
+	this.lastOverlay = null;
+	this.currentView = null;
+	this.currentState = null;
+	this.currentOverlay = null;
+	this.currentQuery = {index: 0, rule: null, mediaText: null, id: null};
+	this.inclusionQuery = "(min-width: 0px)";
+	this.exclusionQuery = "none and (min-width: 99999px)";
+	this.LastModifiedDateLabelName = "LastModifiedDateLabel";
+	this.viewScaleSliderId = "ViewScaleSliderInput";
+	this.pageRefreshedName = "showPageRefreshedNotification";
+	this.application = null;
+	this.applicationStylesheet = null;
+	this.showByMediaQuery = null;
+	this.mediaQueryDictionary = {};
+	this.viewsDictionary = {};
+	this.addedViews = [];
+	this.viewStates = [];
+	this.views = [];
+	this.viewIds = [];
+	this.viewQueries = {};
+	this.overlays = {};
+	this.overlayIds = [];
+	this.numberOfViews = 0;
+	this.verticalPadding = 0;
+	this.horizontalPadding = 0;
+	this.stateName = null;
+	this.viewScale = 1;
+	this.viewLeft = 0;
+	this.viewTop = 0;
+	this.horizontalScrollbarsNeeded = false;
+	this.verticalScrollbarsNeeded = false;
+
+	// view settings
+	this.showUpdateNotification = false;
+	this.showNavigationControls = false;
+	this.scaleViewsToFit = false;
+	this.scaleToFitOnDoubleClick = false;
+	this.actualSizeOnDoubleClick = false;
+	this.scaleViewsOnResize = false;
+	this.navigationOnKeypress = false;
+	this.showViewName = false;
+	this.enableDeepLinking = true;
+	this.refreshPageForChanges = false;
+	this.showRefreshNotifications = true;
+
+	// view controls
+	this.scaleViewSlider = null;
+	this.lastModifiedLabel = null;
+	this.supportsPopState = false; // window.history.pushState!=null;
+	this.initialized = false;
+
+	// refresh properties
+	this.refreshDuration = 250;
+	this.lastModifiedDate = null;
+	this.refreshRequest = null;
+	this.refreshInterval = null;
+	this.refreshContent = null;
+	this.refreshContentSize = null;
+	this.refreshCheckContent = false;
+	this.refreshCheckContentSize = false;
+
+	var self = this;
+
+	self.initialize = function(event) {
+		var view = self.getVisibleView();
+		var views = self.getVisibleViews();
+		if (view==null) view = self.getInitialView();
+		self.collectViews();
+		self.collectOverlays();
+		self.collectMediaQueries();
+
+		for (let index = 0; index < views.length; index++) {
+			var view = views[index];
+			self.setViewOptions(view);
+			self.setViewVariables(view);
+			self.centerView(view);
+		}
+
+		// sometimes the body size is 0 so we call this now and again later
+		if (self.initialized) {
+			window.addEventListener(self.NAVIGATION_CHANGE, self.viewChangeHandler);
+			window.addEventListener("keyup", self.keypressHandler);
+			window.addEventListener("keypress", self.keypressHandler);
+			window.addEventListener("resize", self.resizeHandler);
+			window.document.addEventListener("dblclick", self.doubleClickHandler);
+
+			if (self.supportsPopState) {
+				window.addEventListener('popstate', self.popStateHandler);
+			}
+			else {
+				window.addEventListener('hashchange', self.hashChangeHandler);
+			}
+
+			// we are ready to go
+			window.dispatchEvent(new Event(self.APPLICATION_COMPLETE));
+		}
+
+		if (self.initialized==false) {
+			if (self.enableDeepLinking) {
+				self.syncronizeViewToURL();
+			} 
+	
+			if (self.refreshPageForChanges) {
+				self.setupRefreshForChanges();
+			}
+	
+			self.initialized = true;
+		}
+		
+		if (self.scaleViewsToFit) {
+			self.viewScale = self.scaleViewToFit(view);
+			
+			if (self.viewScale<0) {
+				setTimeout(self.scaleViewToFit, 500, view);
+			}
+		}
+		else if (view) {
+			self.viewScale = self.getViewScaleValue(view);
+			self.centerView(view);
+			self.updateSliderValue(self.viewScale);
+		}
+		else {
+			// no view found
+		}
+	
+		if (self.showUpdateNotification) {
+			self.showNotification();
+		}
+
+		//"addEventListener" in window ? null : window.addEventListener = window.attachEvent;
+		//"addEventListener" in document ? null : document.addEventListener = document.attachEvent;
+	}
+
+
+	///////////////////////////////////////
+	// AUTO REFRESH 
+	///////////////////////////////////////
+
+	self.setupRefreshForChanges = function() {
+		self.refreshRequest = new XMLHttpRequest();
+
+		if (!self.refreshRequest) {
+			return false;
+		}
+
+		// get document start values immediately
+		self.requestRefreshUpdate();
+	}
+
+	/**
+	 * Attempt to check the last modified date by the headers 
+	 * or the last modified property from the byte array (experimental)
+	 **/
+	self.requestRefreshUpdate = function() {
+		var url = document.location.href;
+		var protocol = window.location.protocol;
+		var method;
+		
+		try {
+
+			if (self.refreshCheckContentSize) {
+				self.refreshRequest.open('HEAD', url, true);
+			}
+			else if (self.refreshCheckContent) {
+				self.refreshContent = document.documentElement.outerHTML;
+				self.refreshRequest.open('GET', url, true);
+				self.refreshRequest.responseType = "text";
+			}
+			else {
+
+				// get page last modified date for the first call to compare to later
+				if (self.lastModifiedDate==null) {
+
+					// File system does not send headers in FF so get blob if possible
+					if (protocol=="file:") {
+						self.refreshRequest.open("GET", url, true);
+						self.refreshRequest.responseType = "blob";
+					}
+					else {
+						self.refreshRequest.open("HEAD", url, true);
+						self.refreshRequest.responseType = "blob";
+					}
+
+					self.refreshRequest.onload = self.refreshOnLoadOnceHandler;
+
+					// In some browsers (Chrome & Safari) this error occurs at send: 
+					// 
+					// Chrome - Access to XMLHttpRequest at 'file:///index.html' from origin 'null' 
+					// has been blocked by CORS policy: 
+					// Cross origin requests are only supported for protocol schemes: 
+					// http, data, chrome, chrome-extension, https.
+					// 
+					// Safari - XMLHttpRequest cannot load file:///Users/user/Public/index.html. Cross origin requests are only supported for HTTP.
+					// 
+					// Solution is to run a local server, set local permissions or test in another browser
+					self.refreshRequest.send(null);
+
+					// In MS browsers the following behavior occurs possibly due to an AJAX call to check last modified date: 
+					// 
+					// DOM7011: The code on this page disabled back and forward caching.
+
+					// In Brave (Chrome) error when on the server
+					// index.js:221 HEAD https://www.example.com/ net::ERR_INSUFFICIENT_RESOURCES
+					// self.refreshRequest.send(null);
+
+				}
+				else {
+					self.refreshRequest = new XMLHttpRequest();
+					self.refreshRequest.onreadystatechange = self.refreshHandler;
+					self.refreshRequest.ontimeout = function() {
+						self.log("Couldn't find page to check for updates");
+					}
+					
+					var method;
+					if (protocol=="file:") {
+						method = "GET";
+					}
+					else {
+						method = "HEAD";
+					}
+
+					//refreshRequest.open('HEAD', url, true);
+					self.refreshRequest.open(method, url, true);
+					self.refreshRequest.responseType = "blob";
+					self.refreshRequest.send(null);
+				}
+			}
+		}
+		catch (error) {
+			self.log("Refresh failed for the following reason:")
+			self.log(error);
+		}
+	}
+
+	self.refreshHandler = function() {
+		var contentSize;
+
+		try {
+
+			if (self.refreshRequest.readyState === XMLHttpRequest.DONE) {
+				
+				if (self.refreshRequest.status === 2 || 
+					self.refreshRequest.status === 200) {
+					var pageChanged = false;
+
+					self.updateLastModifiedLabel();
+
+					if (self.refreshCheckContentSize) {
+						var lastModifiedHeader = self.refreshRequest.getResponseHeader("Last-Modified");
+						contentSize = self.refreshRequest.getResponseHeader("Content-Length");
+						//lastModifiedDate = refreshRequest.getResponseHeader("Last-Modified");
+						var headers = self.refreshRequest.getAllResponseHeaders();
+						var hasContentHeader = headers.indexOf("Content-Length")!=-1;
+						
+						if (hasContentHeader) {
+							contentSize = self.refreshRequest.getResponseHeader("Content-Length");
+
+							// size has not been set yet
+							if (self.refreshContentSize==null) {
+								self.refreshContentSize = contentSize;
+								// exit and let interval call this method again
+								return;
+							}
+
+							if (contentSize!=self.refreshContentSize) {
+								pageChanged = true;
+							}
+						}
+					}
+					else if (self.refreshCheckContent) {
+
+						if (self.refreshRequest.responseText!=self.refreshContent) {
+							pageChanged = true;
+						}
+					}
+					else {
+						lastModifiedHeader = self.getLastModified(self.refreshRequest);
+
+						if (self.lastModifiedDate!=lastModifiedHeader) {
+							self.log("lastModifiedDate:" + self.lastModifiedDate + ",lastModifiedHeader:" +lastModifiedHeader);
+							pageChanged = true;
+						}
+
+					}
+
+					
+					if (pageChanged) {
+						clearInterval(self.refreshInterval);
+						self.refreshUpdatedPage();
+						return;
+					}
+
+				}
+				else {
+					self.log('There was a problem with the request.');
+				}
+
+			}
+		}
+		catch( error ) {
+			//console.log('Caught Exception: ' + error);
+		}
+	}
+
+	self.refreshOnLoadOnceHandler = function(event) {
+
+		// get the last modified date
+		if (self.refreshRequest.response) {
+			self.lastModifiedDate = self.getLastModified(self.refreshRequest);
+
+			if (self.lastModifiedDate!=null) {
+
+				if (self.refreshInterval==null) {
+					self.refreshInterval = setInterval(self.requestRefreshUpdate, self.refreshDuration);
+				}
+			}
+			else {
+				self.log("Could not get last modified date from the server");
+			}
+		}
+	}
+
+	self.refreshUpdatedPage = function() {
+		if (self.showRefreshNotifications) {
+			var date = new Date().setTime((new Date().getTime()+10000));
+			document.cookie = encodeURIComponent(self.pageRefreshedName) + "=true" + "; max-age=6000;" + " path=/";
+		}
+
+		document.location.reload(true);
+	}
+
+	self.showNotification = function(duration) {
+		var notificationID = self.pageRefreshedName+"ID";
+		var notification = document.getElementById(notificationID);
+		if (duration==null) duration = 4000;
+
+		if (notification!=null) {return;}
+
+		notification = document.createElement("div");
+		notification.id = notificationID;
+		notification.textContent = "PAGE UPDATED";
+		var styleRule = ""
+		styleRule = "position: fixed; padding: 7px 16px 6px 16px; font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; left: 50%;";
+		styleRule += "top: 20px; background-color: rgba(0,0,0,.5); border-radius: 12px; color:rgb(235, 235, 235); transition: all 2s linear;";
+		styleRule += "transform: translateX(-50%); letter-spacing: .5px; filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, .1)); cursor: pointer";
+		notification.setAttribute("style", styleRule);
+
+		notification.className = "PageRefreshedClass";
+		notification.addEventListener("click", function() {
+			notification.parentNode.removeChild(notification);
+		});
+		
+		document.body.appendChild(notification);
+
+		setTimeout(function() {
+			notification.style.opacity = "0";
+			notification.style.filter = "drop-shadow( 0px 0px 0px rgba(0,0,0, .5))";
+			setTimeout(function() {
+				try {
+					notification.parentNode.removeChild(notification);
+				} catch(error) {}
+			}, duration)
+		}, duration);
+
+		document.cookie = encodeURIComponent(self.pageRefreshedName) + "=; max-age=1; path=/";
+	}
+
+	/**
+	 * Get the last modified date from the header 
+	 * or file object after request has been received
+	 **/
+	self.getLastModified = function(request) {
+		var date;
+
+		// file protocol - FILE object with last modified property
+		if (request.response && request.response.lastModified) {
+			date = request.response.lastModified;
+		}
+		
+		// http protocol - check headers
+		if (date==null) {
+			date = request.getResponseHeader("Last-Modified");
+		}
+
+		return date;
+	}
+
+	self.updateLastModifiedLabel = function() {
+		var labelValue = "";
+		
+		if (self.lastModifiedLabel==null) {
+			self.lastModifiedLabel = document.getElementById("LastModifiedLabel");
+		}
+
+		if (self.lastModifiedLabel) {
+			var seconds = parseInt(((new Date().getTime() - Date.parse(document.lastModified)) / 1000 / 60) * 100 + "");
+			var minutes = 0;
+			var hours = 0;
+
+			if (seconds < 60) {
+				seconds = Math.floor(seconds/10)*10;
+				labelValue = seconds + " seconds";
+			}
+			else {
+				minutes = parseInt((seconds/60) + "");
+
+				if (minutes>60) {
+					hours = parseInt((seconds/60/60) +"");
+					labelValue += hours==1 ? " hour" : " hours";
+				}
+				else {
+					labelValue = minutes+"";
+					labelValue += minutes==1 ? " minute" : " minutes";
+				}
+			}
+			
+			if (seconds<10) {
+				labelValue = "Updated now";
+			}
+			else {
+				labelValue = "Updated " + labelValue + " ago";
+			}
+
+			if (self.lastModifiedLabel.firstElementChild) {
+				self.lastModifiedLabel.firstElementChild.textContent = labelValue;
+
+			}
+			else if ("textContent" in self.lastModifiedLabel) {
+				self.lastModifiedLabel.textContent = labelValue;
+			}
+		}
+	}
+
+	self.getShortString = function(string, length) {
+		if (length==null) length = 30;
+		string = string!=null ? string.substr(0, length).replace(/\n/g, "") : "[String is null]";
+		return string;
+	}
+
+	self.getShortNumber = function(value, places) {
+		if (places==null || places<1) places = 4;
+		value = Math.round(value * Math.pow(10,places)) / Math.pow(10, places);
+		return value;
+	}
+
+	///////////////////////////////////////
+	// NAVIGATION CONTROLS
+	///////////////////////////////////////
+
+	self.updateViewLabel = function() {
+		var viewNavigationLabel = document.getElementById("ViewNavigationLabel");
+		var view = self.getVisibleView();
+		var viewIndex = view ? self.getViewIndex(view) : -1;
+		var viewName = view ? self.getViewPreferenceValue(view, self.prefix + "view-name") : null;
+		var viewId = view ? view.id : null;
+
+		if (viewNavigationLabel && view) {
+			if (viewName && viewName.indexOf('"')!=-1) {
+				viewName = viewName.replace(/"/g, "");
+			}
+
+			if (self.showViewName) {
+				viewNavigationLabel.textContent = viewName;
+				self.setTooltip(viewNavigationLabel, viewIndex + 1 + " of " + self.numberOfViews);
+			}
+			else {
+				viewNavigationLabel.textContent = viewIndex + 1 + " of " + self.numberOfViews;
+				self.setTooltip(viewNavigationLabel, viewName);
+			}
+
+		}
+	}
+
+	self.updateURL = function(view) {
+		view = view == null ? self.getVisibleView() : view;
+		var viewId = view ? view.id : null
+		var viewFragment = view ? "#"+ viewId : null;
+
+		if (viewId && self.viewIds.length>1 && self.enableDeepLinking) {
+
+			if (self.supportsPopState==false) {
+				self.setFragment(viewId);
+			}
+			else {
+				if (viewFragment!=window.location.hash) {
+
+					if (window.location.hash==null) {
+						window.history.replaceState({name:viewId}, null, viewFragment);
+					}
+					else {
+						window.history.pushState({name:viewId}, null, viewFragment);
+					}
+				}
+			}
+		}
+	}
+
+	self.updateURLState = function(view, stateName) {
+		stateName = view && (stateName=="" || stateName==null) ? self.getStateNameByViewId(view.id) : stateName;
+
+		if (self.supportsPopState==false) {
+			self.setFragment(stateName);
+		}
+		else {
+			if (stateName!=window.location.hash) {
+
+				if (window.location.hash==null) {
+					window.history.replaceState({name:view.viewId}, null, stateName);
+				}
+				else {
+					window.history.pushState({name:view.viewId}, null, stateName);
+				}
+			}
+		}
+	}
+
+	self.setFragment = function(value) {
+		window.location.hash = "#" + value;
+	}
+
+	self.setTooltip = function(element, value) {
+		// setting the tooltip in edge causes a page crash on hover
+		if (/Edge/.test(navigator.userAgent)) { return; }
+
+		if ("title" in element) {
+			element.title = value;
+		}
+	}
+
+	self.getStylesheetRules = function(styleSheet) {
+		try {
+			if (styleSheet) return styleSheet.cssRules || styleSheet.rules;
+	
+			return document.styleSheets[0]["cssRules"] || document.styleSheets[0]["rules"];
+		}
+		catch (error) {
+			// ERRORS:
+			// SecurityError: The operation is insecure.
+			// Errors happen when script loads before stylesheet or loading an external css locally
+
+			// InvalidAccessError: A parameter or an operation is not supported by the underlying object
+			// Place script after stylesheet
+
+			console.log(error);
+			if (error.toString().indexOf("The operation is insecure")!=-1) {
+				console.log("Load the stylesheet before the script or load the stylesheet inline until it can be loaded on a server")
+			}
+			return [];
+		}
+	}
+
+	/**
+	 * If single page application hide all of the views. 
+	 * @param {Number} selectedIndex if provided shows the view at index provided
+	 **/
+	self.hideViews = function(selectedIndex, animation) {
+		var rules = self.getStylesheetRules();
+		var queryIndex = 0;
+		var numberOfRules = rules!=null ? rules.length : 0;
+
+		// loop through rules and hide media queries except selected
+		for (var i=0;i<numberOfRules;i++) {
+			var rule = rules[i];
+			var cssText = rule && rule.cssText;
+
+			if (rule.media!=null && cssText && cssText.match("--web-view-name:")) {
+
+				if (queryIndex==selectedIndex) {
+					self.currentQuery.mediaText = rule.conditionText;
+					self.currentQuery.index = selectedIndex;
+					self.currentQuery.rule = rule;
+					self.enableMediaQuery(rule);
+				}
+				else {
+					if (animation) {
+						self.fadeOut(rule)
+					}
+					else {
+						self.disableMediaQuery(rule);
+					}
+				}
+				
+				queryIndex++;
+			}
+		}
+
+		self.numberOfViews = queryIndex;
+		self.updateViewLabel();
+		self.updateURL();
+
+		self.dispatchViewChange();
+
+		var view = self.getVisibleView();
+		var viewIndex = view ? self.getViewIndex(view) : -1;
+
+		return viewIndex==selectedIndex ? view : null;
+	}
+
+	/**
+	 * If single page application hide all of the views. 
+	 * @param {HTMLElement} selectedView if provided shows the view passed in
+	 **/
+	 self.hideAllViews = function(selectedView, animation) {
+		var views = self.views;
+		var queryIndex = 0;
+		var numberOfViews = views!=null ? views.length : 0;
+
+		// loop through rules and hide media queries except selected
+		for (var i=0;i<numberOfViews;i++) {
+			var viewData = views[i];
+			var view = viewData && viewData.view;
+			var mediaRule = viewData && viewData.mediaRule;
+			
+			if (view==selectedView) {
+				self.currentQuery.mediaText = mediaRule.conditionText;
+				self.currentQuery.index = queryIndex;
+				self.currentQuery.rule = mediaRule;
+				self.enableMediaQuery(mediaRule);
+			}
+			else {
+				if (animation) {
+					self.fadeOut(mediaRule)
+				}
+				else {
+					self.disableMediaQuery(mediaRule);
+				}
+			}
+			
+			queryIndex++;
+		}
+
+		self.numberOfViews = queryIndex;
+		self.updateViewLabel();
+		self.updateURL();
+		self.dispatchViewChange();
+
+		var visibleView = self.getVisibleView();
+
+		return visibleView==selectedView ? selectedView : null;
+	}
+
+	/**
+	 * Hide view
+	 * @param {Object} view element to hide
+	 **/
+	self.hideView = function(view) {
+		var rule = view ? self.mediaQueryDictionary[view.id] : null;
+
+		if (rule) {
+			self.disableMediaQuery(rule);
+		}
+	}
+
+	/**
+	 * Hide overlay
+	 * @param {Object} overlay element to hide
+	 **/
+	self.hideOverlay = function(overlay) {
+		var rule = overlay ? self.mediaQueryDictionary[overlay.id] : null;
+
+		if (rule) {
+			self.disableMediaQuery(rule);
+
+			//if (self.showByMediaQuery) {
+				overlay.style.display = "none";
+			//}
+		}
+	}
+
+	/**
+	 * Show the view by media query. Does not hide current views
+	 * Sets view options by default
+	 * @param {Object} view element to show
+	 * @param {Boolean} setViewOptions sets view options if null or true
+	 */
+	self.showViewByMediaQuery = function(view, setViewOptions) {
+		var id = view ? view.id : null;
+		var query = id ? self.mediaQueryDictionary[id] : null;
+		var isOverlay = view ? self.isOverlay(view) : false;
+		setViewOptions = setViewOptions==null ? true : setViewOptions;
+
+		if (query) {
+			self.enableMediaQuery(query);
+
+			if (isOverlay && view && setViewOptions) {
+				self.setViewVariables(null, view);
+			}
+			else {
+				if (view && setViewOptions) self.setViewOptions(view);
+				if (view && setViewOptions) self.setViewVariables(view);
+			}
+		}
+	}
+
+	/**
+	 * Show the view. Does not hide current views
+	 */
+	self.showView = function(view, setViewOptions) {
+		var id = view ? view.id : null;
+		var query = id ? self.mediaQueryDictionary[id] : null;
+		var display = null;
+		setViewOptions = setViewOptions==null ? true : setViewOptions;
+
+		if (query) {
+			self.enableMediaQuery(query);
+			if (view==null) view =self.getVisibleView();
+			if (view && setViewOptions) self.setViewOptions(view);
+		}
+		else if (id) {
+			display = window.getComputedStyle(view).getPropertyValue("display");
+			if (display=="" || display=="none") {
+				view.style.display = "block";
+			}
+		}
+
+		if (view) {
+			if (self.currentView!=null) {
+				self.lastView = self.currentView;
+			}
+
+			self.currentView = view;
+		}
+	}
+
+	self.showViewById = function(id, setViewOptions) {
+		var view = id ? self.getViewById(id) : null;
+
+		if (view) {
+			self.showView(view);
+			return;
+		}
+
+		self.log("View not found '" + id + "'");
+	}
+
+	self.getElementView = function(element) {
+		var view = element;
+		var viewFound = false;
+
+		while (viewFound==false || view==null) {
+			if (view && self.viewsDictionary[view.id]) {
+				return view;
+			}
+			view = view.parentNode;
+		}
+	}
+
+	/**
+	 * Show overlay over view
+	 * @param {Event | HTMLElement} event event or html element with styles applied
+	 * @param {String} id id of view or view reference
+	 * @param {Number} x x location
+	 * @param {Number} y y location
+	 */
+	self.showOverlay = function(event, id, x, y) {
+		var overlay = id && typeof id === 'string' ? self.getViewById(id) : id ? id : null;
+		var query = overlay ? self.mediaQueryDictionary[overlay.id] : null;
+		var centerHorizontally = false;
+		var centerVertically = false;
+		var anchorLeft = false;
+		var anchorTop = false;
+		var anchorRight = false;
+		var anchorBottom = false;
+		var display = null;
+		var reparent = true;
+		var view = null;
+		
+		if (overlay==null || overlay==false) {
+			self.log("Overlay not found, '"+ id + "'");
+			return;
+		}
+
+		// get enter animation - event target must have css variables declared
+		if (event) {
+			var button = event.currentTarget || event; // can be event or htmlelement
+			var buttonComputedStyles = getComputedStyle(button);
+			var actionTargetValue = buttonComputedStyles.getPropertyValue(self.prefix+"action-target").trim();
+			var animation = buttonComputedStyles.getPropertyValue(self.prefix+"animation").trim();
+			var isAnimated = animation!="";
+			var targetType = buttonComputedStyles.getPropertyValue(self.prefix+"action-type").trim();
+			var actionTarget = self.application ? null : self.getElement(actionTargetValue);
+			var actionTargetStyles = actionTarget ? actionTarget.style : null;
+
+			if (actionTargetStyles) {
+				actionTargetStyles.setProperty("animation", animation);
+			}
+
+			if ("stopImmediatePropagation" in event) {
+				event.stopImmediatePropagation();
+			}
+		}
+		
+		if (self.application==false || targetType=="page") {
+			document.location.href = "./" + actionTargetValue;
+			return;
+		}
+
+		// remove any current overlays
+		if (self.currentOverlay) {
+
+			// act as switch if same button
+			if (self.currentOverlay==actionTarget || self.currentOverlay==null) {
+				if (self.lastTrigger==button) {
+					self.removeOverlay(isAnimated);
+					return;
+				}
+			}
+			else {
+				self.removeOverlay(isAnimated);
+			}
+		}
+
+		if (reparent) {
+			view = self.getElementView(button);
+			if (view) {
+				view.appendChild(overlay);
+			}
+		}
+
+		if (query) {
+			//self.setElementAnimation(overlay, null);
+			//overlay.style.animation = animation;
+			self.enableMediaQuery(query);
+			
+			var display = overlay && overlay.style.display;
+			
+			if (overlay && display=="" || display=="none") {
+				overlay.style.display = "block";
+				//self.setViewOptions(overlay);
+			}
+
+			// add animation defined in event target style declaration
+			if (animation && self.supportAnimations) {
+				self.fadeIn(overlay, false, animation);
+			}
+		}
+		else if (id) {
+
+			display = window.getComputedStyle(overlay).getPropertyValue("display");
+
+			if (display=="" || display=="none") {
+				overlay.style.display = "block";
+			}
+
+			// add animation defined in event target style declaration
+			if (animation && self.supportAnimations) {
+				self.fadeIn(overlay, false, animation);
+			}
+		}
+
+		// do not set x or y position if centering
+		var horizontal = self.prefix + "center-horizontally";
+		var vertical = self.prefix + "center-vertically";
+		var style = overlay.style;
+		var transform = [];
+
+		centerHorizontally = self.getIsStyleDefined(id, horizontal) ? self.getViewPreferenceBoolean(overlay, horizontal) : false;
+		centerVertically = self.getIsStyleDefined(id, vertical) ? self.getViewPreferenceBoolean(overlay, vertical) : false;
+		anchorLeft = self.getIsStyleDefined(id, "left");
+		anchorRight = self.getIsStyleDefined(id, "right");
+		anchorTop = self.getIsStyleDefined(id, "top");
+		anchorBottom = self.getIsStyleDefined(id, "bottom");
+
+		
+		if (self.viewsDictionary[overlay.id] && self.viewsDictionary[overlay.id].styleDeclaration) {
+			style = self.viewsDictionary[overlay.id].styleDeclaration.style;
+		}
+		
+		if (centerHorizontally) {
+			style.left = "50%";
+			style.transformOrigin = "0 0";
+			transform.push("translateX(-50%)");
+		}
+		else if (anchorRight && anchorLeft) {
+			style.left = x + "px";
+		}
+		else if (anchorRight) {
+			//style.right = x + "px";
+		}
+		else {
+			style.left = x + "px";
+		}
+		
+		if (centerVertically) {
+			style.top = "50%";
+			transform.push("translateY(-50%)");
+			style.transformOrigin = "0 0";
+		}
+		else if (anchorTop && anchorBottom) {
+			style.top = y + "px";
+		}
+		else if (anchorBottom) {
+			//style.bottom = y + "px";
+		}
+		else {
+			style.top = y + "px";
+		}
+
+		if (transform.length) {
+			style.transform = transform.join(" ");
+		}
+
+		self.currentOverlay = overlay;
+		self.lastTrigger = button;
+	}
+
+	self.goBack = function() {
+		if (self.currentOverlay) {
+			self.removeOverlay();
+		}
+		else if (self.lastView) {
+			self.goToView(self.lastView.id);
+		}
+	}
+
+	self.removeOverlay = function(animate) {
+		var overlay = self.currentOverlay;
+		animate = animate===false ? false : true;
+
+		if (overlay) {
+			var style = overlay.style;
+			
+			if (style.animation && self.supportAnimations && animate) {
+				self.reverseAnimation(overlay, true);
+
+				var duration = self.getAnimationDuration(style.animation, true);
+		
+				setTimeout(function() {
+					self.setElementAnimation(overlay, null);
+					self.hideOverlay(overlay);
+					self.currentOverlay = null;
+				}, duration);
+			}
+			else {
+				self.setElementAnimation(overlay, null);
+				self.hideOverlay(overlay);
+				self.currentOverlay = null;
+			}
+		}
+	}
+
+	/**
+	 * Reverse the animation and hide after
+	 * @param {Object} target element with animation
+	 * @param {Boolean} hide hide after animation ends
+	 */
+	self.reverseAnimation = function(target, hide) {
+		var lastAnimation = null;
+		var style = target.style;
+
+		style.animationPlayState = "paused";
+		lastAnimation = style.animation;
+		style.animation = null;
+		style.animationPlayState = "paused";
+
+		if (hide) {
+			//target.addEventListener("animationend", self.animationEndHideHandler);
+	
+			var duration = self.getAnimationDuration(lastAnimation, true);
+			var isOverlay = self.isOverlay(target);
+	
+			setTimeout(function() {
+				self.setElementAnimation(target, null);
+
+				if (isOverlay) {
+					self.hideOverlay(target);
+				}
+				else {
+					self.hideView(target);
+				}
+			}, duration);
+		}
+
+		setTimeout(function() {
+			style.animation = lastAnimation;
+			style.animationPlayState = "paused";
+			style.animationDirection = "reverse";
+			style.animationPlayState = "running";
+		}, 30);
+	}
+
+	self.animationEndHandler = function(event) {
+		var target = event.currentTarget;
+		self.dispatchEvent(new Event(event.type));
+	}
+
+	self.isOverlay = function(view) {
+		var result = view ? self.getViewPreferenceBoolean(view, self.prefix + "is-overlay") : false;
+
+		return result;
+	}
+
+	self.animationEndHideHandler = function(event) {
+		var target = event.currentTarget;
+		self.setViewVariables(null, target);
+		self.hideView(target);
+		target.removeEventListener("animationend", self.animationEndHideHandler);
+	}
+
+	self.animationEndShowHandler = function(event) {
+		var target = event.currentTarget;
+		target.removeEventListener("animationend", self.animationEndShowHandler);
+	}
+
+	self.setViewOptions = function(view) {
+
+		if (view) {
+			self.minimumScale = self.getViewPreferenceValue(view, self.prefix + "minimum-scale");
+			self.maximumScale = self.getViewPreferenceValue(view, self.prefix + "maximum-scale");
+			self.scaleViewsToFit = self.getViewPreferenceBoolean(view, self.prefix + "scale-to-fit");
+			self.scaleToFitType = self.getViewPreferenceValue(view, self.prefix + "scale-to-fit-type");
+			self.scaleToFitOnDoubleClick = self.getViewPreferenceBoolean(view, self.prefix + "scale-on-double-click");
+			self.actualSizeOnDoubleClick = self.getViewPreferenceBoolean(view, self.prefix + "actual-size-on-double-click");
+			self.scaleViewsOnResize = self.getViewPreferenceBoolean(view, self.prefix + "scale-on-resize");
+			self.enableScaleUp = self.getViewPreferenceBoolean(view, self.prefix + "enable-scale-up");
+			self.centerHorizontally = self.getViewPreferenceBoolean(view, self.prefix + "center-horizontally");
+			self.centerVertically = self.getViewPreferenceBoolean(view, self.prefix + "center-vertically");
+			self.navigationOnKeypress = self.getViewPreferenceBoolean(view, self.prefix + "navigate-on-keypress");
+			self.showViewName = self.getViewPreferenceBoolean(view, self.prefix + "show-view-name");
+			self.refreshPageForChanges = self.getViewPreferenceBoolean(view, self.prefix + "refresh-for-changes");
+			self.refreshPageForChangesInterval = self.getViewPreferenceValue(view, self.prefix + "refresh-interval");
+			self.showNavigationControls = self.getViewPreferenceBoolean(view, self.prefix + "show-navigation-controls");
+			self.scaleViewSlider = self.getViewPreferenceBoolean(view, self.prefix + "show-scale-controls");
+			self.enableDeepLinking = self.getViewPreferenceBoolean(view, self.prefix + "enable-deep-linking");
+			self.singlePageApplication = self.getViewPreferenceBoolean(view, self.prefix + "application");
+			self.showByMediaQuery = self.getViewPreferenceBoolean(view, self.prefix + "show-by-media-query");
+			self.showUpdateNotification = document.cookie!="" ? document.cookie.indexOf(self.pageRefreshedName)!=-1 : false;
+			self.imageComparisonDuration = self.getViewPreferenceValue(view, self.prefix + "image-comparison-duration");
+			self.supportAnimations = self.getViewPreferenceBoolean(view, self.prefix + "enable-animations", true);
+
+			if (self.scaleViewsToFit) {
+				var newScaleValue = self.scaleViewToFit(view);
+				
+				if (newScaleValue<0) {
+					setTimeout(self.scaleViewToFit, 500, view);
+				}
+			}
+			else {
+				self.viewScale = self.getViewScaleValue(view);
+				self.viewToFitWidthScale = self.getViewFitToViewportWidthScale(view, self.enableScaleUp)
+				self.viewToFitHeightScale = self.getViewFitToViewportScale(view, self.enableScaleUp);
+				self.updateSliderValue(self.viewScale);
+			}
+
+			if (self.imageComparisonDuration!=null) {
+				// todo
+			}
+
+			if (self.refreshPageForChangesInterval!=null) {
+				self.refreshDuration = Number(self.refreshPageForChangesInterval);
+			}
+		}
+	}
+
+	self.previousView = function(event) {
+		var rules = self.getStylesheetRules();
+		var view = self.getVisibleView()
+		var index = view ? self.getViewIndex(view) : -1;
+		var prevQueryIndex = index!=-1 ? index-1 : self.currentQuery.index-1;
+		var queryIndex = 0;
+		var numberOfRules = rules!=null ? rules.length : 0;
+
+		if (event) {
+			event.stopImmediatePropagation();
+		}
+
+		if (prevQueryIndex<0) {
+			return;
+		}
+
+		// loop through rules and hide media queries except selected
+		for (var i=0;i<numberOfRules;i++) {
+			var rule = rules[i];
+			
+			if (rule.media!=null) {
+
+				if (queryIndex==prevQueryIndex) {
+					self.currentQuery.mediaText = rule.conditionText;
+					self.currentQuery.index = prevQueryIndex;
+					self.currentQuery.rule = rule;
+					self.enableMediaQuery(rule);
+					self.updateViewLabel();
+					self.updateURL();
+					self.dispatchViewChange();
+				}
+				else {
+					self.disableMediaQuery(rule);
+				}
+
+				queryIndex++;
+			}
+		}
+	}
+
+	self.nextView = function(event) {
+		var rules = self.getStylesheetRules();
+		var view = self.getVisibleView();
+		var index = view ? self.getViewIndex(view) : -1;
+		var nextQueryIndex = index!=-1 ? index+1 : self.currentQuery.index+1;
+		var queryIndex = 0;
+		var numberOfRules = rules!=null ? rules.length : 0;
+		var numberOfMediaQueries = self.getNumberOfMediaRules();
+
+		if (event) {
+			event.stopImmediatePropagation();
+		}
+
+		if (nextQueryIndex>=numberOfMediaQueries) {
+			return;
+		}
+
+		// loop through rules and hide media queries except selected
+		for (var i=0;i<numberOfRules;i++) {
+			var rule = rules[i];
+			
+			if (rule.media!=null) {
+
+				if (queryIndex==nextQueryIndex) {
+					self.currentQuery.mediaText = rule.conditionText;
+					self.currentQuery.index = nextQueryIndex;
+					self.currentQuery.rule = rule;
+					self.enableMediaQuery(rule);
+					self.updateViewLabel();
+					self.updateURL();
+					self.dispatchViewChange();
+				}
+				else {
+					self.disableMediaQuery(rule);
+				}
+
+				queryIndex++;
+			}
+		}
+	}
+
+	/**
+	 * Enables a view via media query
+	 */
+	self.enableMediaQuery = function(rule) {
+
+		try {
+			rule.media.mediaText = self.inclusionQuery;
+		}
+		catch(error) {
+			//self.log(error);
+			rule.conditionText = self.inclusionQuery;
+		}
+	}
+
+	self.disableMediaQuery = function(rule) {
+
+		try {
+			rule.media.mediaText = self.exclusionQuery;
+		}
+		catch(error) {
+			rule.conditionText = self.exclusionQuery;
+		}
+	}
+
+	self.dispatchViewChange = function() {
+		try {
+			var event = new Event(self.NAVIGATION_CHANGE);
+			window.dispatchEvent(event);
+		}
+		catch (error) {
+			// In IE 11: Object doesn't support this action
+		}
+	}
+
+	self.getNumberOfMediaRules = function() {
+		var rules = self.getStylesheetRules();
+		var numberOfRules = rules ? rules.length : 0;
+		var numberOfQueries = 0;
+
+		for (var i=0;i<numberOfRules;i++) {
+			if (rules[i].media!=null) { numberOfQueries++; }
+		}
+		
+		return numberOfQueries;
+	}
+
+	/////////////////////////////////////////
+	// VIEW SCALE 
+	/////////////////////////////////////////
+
+	self.sliderChangeHandler = function(event) {
+		var value = self.getShortNumber(event.currentTarget.value/100);
+		var view = self.getVisibleView();
+		self.setViewScaleValue(view, false, value, true);
+	}
+
+	self.updateSliderValue = function(scale) {
+		var slider = document.getElementById(self.viewScaleSliderId);
+		var tooltip = parseInt(scale * 100 + "") + "%";
+		var inputType;
+		var inputValue;
+		
+		if (slider) {
+			inputValue = self.getShortNumber(scale * 100);
+			if (inputValue!=slider["value"]) {
+				slider["value"] = inputValue;
+			}
+			inputType = slider.getAttributeNS(null, "type");
+
+			if (inputType!="range") {
+				// input range is not supported
+				slider.style.display = "none";
+			}
+
+			self.setTooltip(slider, tooltip);
+		}
+	}
+
+	self.viewChangeHandler = function(event) {
+		var view = self.getVisibleView();
+		var matrix = view ? getComputedStyle(view).transform : null;
+		
+		if (matrix) {
+			self.viewScale = self.getViewScaleValue(view);
+			
+			var scaleNeededToFit = self.getViewFitToViewportScale(view);
+			var isViewLargerThanViewport = scaleNeededToFit<1;
+			
+			// scale large view to fit if scale to fit is enabled
+			if (self.scaleViewsToFit) {
+				self.scaleViewToFit(view);
+			}
+			else {
+				self.updateSliderValue(self.viewScale);
+			}
+		}
+	}
+
+	self.getViewScaleValue = function(view) {
+		var matrix = getComputedStyle(view).transform;
+
+		if (matrix) {
+			var matrixArray = matrix.replace("matrix(", "").split(",");
+			var scaleX = parseFloat(matrixArray[0]);
+			var scaleY = parseFloat(matrixArray[3]);
+			var scale = Math.min(scaleX, scaleY);
+		}
+
+		return scale;
+	}
+
+	/**
+	 * Scales view to scale. 
+	 * @param {Object} view view to scale. views are in views array
+	 * @param {Boolean} scaleToFit set to true to scale to fit. set false to use desired scale value
+	 * @param {Number} desiredScale scale to define. not used if scale to fit is false
+	 * @param {Boolean} isSliderChange indicates if slider is callee
+	 */
+	self.setViewScaleValue = function(view, scaleToFit, desiredScale, isSliderChange) {
+		var enableScaleUp = self.enableScaleUp;
+		var scaleToFitType = self.scaleToFitType;
+		var minimumScale = self.minimumScale;
+		var maximumScale = self.maximumScale;
+		var hasMinimumScale = !isNaN(minimumScale) && minimumScale!="";
+		var hasMaximumScale = !isNaN(maximumScale) && maximumScale!="";
+		var scaleNeededToFit = self.getViewFitToViewportScale(view, enableScaleUp);
+		var scaleNeededToFitWidth = self.getViewFitToViewportWidthScale(view, enableScaleUp);
+		var scaleNeededToFitHeight = self.getViewFitToViewportHeightScale(view, enableScaleUp);
+		var scaleToFitFull = self.getViewFitToViewportScale(view, true);
+		var scaleToFitFullWidth = self.getViewFitToViewportWidthScale(view, true);
+		var scaleToFitFullHeight = self.getViewFitToViewportHeightScale(view, true);
+		var scaleToWidth = scaleToFitType=="width";
+		var scaleToHeight = scaleToFitType=="height";
+		var shrunkToFit = false;
+		var topPosition = null;
+		var leftPosition = null;
+		var translateY = null;
+		var translateX = null;
+		var transformValue = "";
+		var canCenterVertically = true;
+		var canCenterHorizontally = true;
+		var style = view.style;
+
+		if (view && self.viewsDictionary[view.id] && self.viewsDictionary[view.id].styleDeclaration) {
+			style = self.viewsDictionary[view.id].styleDeclaration.style;
+		}
+
+		if (scaleToFit && isSliderChange!=true) {
+			if (scaleToFitType=="fit" || scaleToFitType=="") {
+				desiredScale = scaleNeededToFit;
+			}
+			else if (scaleToFitType=="width") {
+				desiredScale = scaleNeededToFitWidth;
+			}
+			else if (scaleToFitType=="height") {
+				desiredScale = scaleNeededToFitHeight;
+			}
+		}
+		else {
+			if (isNaN(desiredScale)) {
+				desiredScale = 1;
+			}
+		}
+
+		self.updateSliderValue(desiredScale);
+		
+		// scale to fit width
+		if (scaleToWidth && scaleToHeight==false) {
+			canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
+			canCenterHorizontally = scaleNeededToFitWidth>=1 && enableScaleUp==false;
+
+			if (isSliderChange) {
+				canCenterHorizontally = desiredScale<scaleToFitFullWidth;
+			}
+			else if (scaleToFit) {
+				desiredScale = scaleNeededToFitWidth;
+			}
+
+			if (hasMinimumScale) {
+				desiredScale = Math.max(desiredScale, Number(minimumScale));
+			}
+
+			if (hasMaximumScale) {
+				desiredScale = Math.min(desiredScale, Number(maximumScale));
+			}
+
+			desiredScale = self.getShortNumber(desiredScale);
+
+			canCenterHorizontally = self.canCenterHorizontally(view, "width", enableScaleUp, desiredScale, minimumScale, maximumScale);
+			canCenterVertically = self.canCenterVertically(view, "width", enableScaleUp, desiredScale, minimumScale, maximumScale);
+
+			if (desiredScale>1 && (enableScaleUp || isSliderChange)) {
+				transformValue = "scale(" + desiredScale + ")";
+			}
+			else if (desiredScale>=1 && enableScaleUp==false) {
+				transformValue = "scale(" + 1 + ")";
+			}
+			else {
+				transformValue = "scale(" + desiredScale + ")";
+			}
+
+			if (self.centerVertically) {
+				if (canCenterVertically) {
+					translateY = "-50%";
+					topPosition = "50%";
+				}
+				else {
+					translateY = "0";
+					topPosition = "0";
+				}
+				
+				if (style.top != topPosition) {
+					style.top = topPosition + "";
+				}
+
+				if (canCenterVertically) {
+					transformValue += " translateY(" + translateY+ ")";
+				}
+			}
+
+			if (self.centerHorizontally) {
+				if (canCenterHorizontally) {
+					translateX = "-50%";
+					leftPosition = "50%";
+				}
+				else {
+					translateX = "0";
+					leftPosition = "0";
+				}
+
+				if (style.left != leftPosition) {
+					style.left = leftPosition + "";
+				}
+
+				if (canCenterHorizontally) {
+					transformValue += " translateX(" + translateX+ ")";
+				}
+			}
+
+			style.transformOrigin = "0 0";
+			style.transform = transformValue;
+
+			self.viewScale = desiredScale;
+			self.viewToFitWidthScale = scaleNeededToFitWidth;
+			self.viewToFitHeightScale = scaleNeededToFitHeight;
+			self.viewLeft = leftPosition;
+			self.viewTop = topPosition;
+
+			return desiredScale;
+		}
+
+		// scale to fit height
+		if (scaleToHeight && scaleToWidth==false) {
+			//canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
+			//canCenterHorizontally = scaleNeededToFitHeight<=scaleNeededToFitWidth && enableScaleUp==false;
+			canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
+			canCenterHorizontally = scaleNeededToFitWidth>=1 && enableScaleUp==false;
+			
+			if (isSliderChange) {
+				canCenterHorizontally = desiredScale<scaleToFitFullHeight;
+			}
+			else if (scaleToFit) {
+				desiredScale = scaleNeededToFitHeight;
+			}
+
+			if (hasMinimumScale) {
+				desiredScale = Math.max(desiredScale, Number(minimumScale));
+			}
+
+			if (hasMaximumScale) {
+				desiredScale = Math.min(desiredScale, Number(maximumScale));
+				//canCenterVertically = desiredScale>=scaleNeededToFitHeight && enableScaleUp==false;
+			}
+
+			desiredScale = self.getShortNumber(desiredScale);
+
+			canCenterHorizontally = self.canCenterHorizontally(view, "height", enableScaleUp, desiredScale, minimumScale, maximumScale);
+			canCenterVertically = self.canCenterVertically(view, "height", enableScaleUp, desiredScale, minimumScale, maximumScale);
+
+			if (desiredScale>1 && (enableScaleUp || isSliderChange)) {
+				transformValue = "scale(" + desiredScale + ")";
+			}
+			else if (desiredScale>=1 && enableScaleUp==false) {
+				transformValue = "scale(" + 1 + ")";
+			}
+			else {
+				transformValue = "scale(" + desiredScale + ")";
+			}
+
+			if (self.centerHorizontally) {
+				if (canCenterHorizontally) {
+					translateX = "-50%";
+					leftPosition = "50%";
+				}
+				else {
+					translateX = "0";
+					leftPosition = "0";
+				}
+
+				if (style.left != leftPosition) {
+					style.left = leftPosition + "";
+				}
+
+				if (canCenterHorizontally) {
+					transformValue += " translateX(" + translateX+ ")";
+				}
+			}
+
+			if (self.centerVertically) {
+				if (canCenterVertically) {
+					translateY = "-50%";
+					topPosition = "50%";
+				}
+				else {
+					translateY = "0";
+					topPosition = "0";
+				}
+				
+				if (style.top != topPosition) {
+					style.top = topPosition + "";
+				}
+
+				if (canCenterVertically) {
+					transformValue += " translateY(" + translateY+ ")";
+				}
+			}
+
+			style.transformOrigin = "0 0";
+			style.transform = transformValue;
+
+			self.viewScale = desiredScale;
+			self.viewToFitWidthScale = scaleNeededToFitWidth;
+			self.viewToFitHeightScale = scaleNeededToFitHeight;
+			self.viewLeft = leftPosition;
+			self.viewTop = topPosition;
+
+			return scaleNeededToFitHeight;
+		}
+
+		if (scaleToFitType=="fit") {
+			//canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFitWidth;
+			//canCenterHorizontally = scaleNeededToFitWidth>=scaleNeededToFitHeight;
+			canCenterVertically = scaleNeededToFitHeight>=scaleNeededToFit;
+			canCenterHorizontally = scaleNeededToFitWidth>=scaleNeededToFit;
+
+			if (hasMinimumScale) {
+				desiredScale = Math.max(desiredScale, Number(minimumScale));
+			}
+
+			desiredScale = self.getShortNumber(desiredScale);
+
+			if (isSliderChange || scaleToFit==false) {
+				canCenterVertically = scaleToFitFullHeight>=desiredScale;
+				canCenterHorizontally = desiredScale<scaleToFitFullWidth;
+			}
+			else if (scaleToFit) {
+				desiredScale = scaleNeededToFit;
+			}
+
+			transformValue = "scale(" + desiredScale + ")";
+
+			//canCenterHorizontally = self.canCenterHorizontally(view, "fit", false, desiredScale);
+			//canCenterVertically = self.canCenterVertically(view, "fit", false, desiredScale);
+			
+			if (self.centerVertically) {
+				if (canCenterVertically) {
+					translateY = "-50%";
+					topPosition = "50%";
+				}
+				else {
+					translateY = "0";
+					topPosition = "0";
+				}
+				
+				if (style.top != topPosition) {
+					style.top = topPosition + "";
+				}
+
+				if (canCenterVertically) {
+					transformValue += " translateY(" + translateY+ ")";
+				}
+			}
+
+			if (self.centerHorizontally) {
+				if (canCenterHorizontally) {
+					translateX = "-50%";
+					leftPosition = "50%";
+				}
+				else {
+					translateX = "0";
+					leftPosition = "0";
+				}
+
+				if (style.left != leftPosition) {
+					style.left = leftPosition + "";
+				}
+
+				if (canCenterHorizontally) {
+					transformValue += " translateX(" + translateX+ ")";
+				}
+			}
+
+			style.transformOrigin = "0 0";
+			style.transform = transformValue;
+
+			self.viewScale = desiredScale;
+			self.viewToFitWidthScale = scaleNeededToFitWidth;
+			self.viewToFitHeightScale = scaleNeededToFitHeight;
+			self.viewLeft = leftPosition;
+			self.viewTop = topPosition;
+
+			self.updateSliderValue(desiredScale);
+			
+			return desiredScale;
+		}
+
+		if (scaleToFitType=="default" || scaleToFitType=="") {
+			desiredScale = 1;
+
+			if (hasMinimumScale) {
+				desiredScale = Math.max(desiredScale, Number(minimumScale));
+			}
+			if (hasMaximumScale) {
+				desiredScale = Math.min(desiredScale, Number(maximumScale));
+			}
+
+			canCenterHorizontally = self.canCenterHorizontally(view, "none", false, desiredScale, minimumScale, maximumScale);
+			canCenterVertically = self.canCenterVertically(view, "none", false, desiredScale, minimumScale, maximumScale);
+
+			if (self.centerVertically) {
+				if (canCenterVertically) {
+					translateY = "-50%";
+					topPosition = "50%";
+				}
+				else {
+					translateY = "0";
+					topPosition = "0";
+				}
+				
+				if (style.top != topPosition) {
+					style.top = topPosition + "";
+				}
+
+				if (canCenterVertically) {
+					transformValue += " translateY(" + translateY+ ")";
+				}
+			}
+
+			if (self.centerHorizontally) {
+				if (canCenterHorizontally) {
+					translateX = "-50%";
+					leftPosition = "50%";
+				}
+				else {
+					translateX = "0";
+					leftPosition = "0";
+				}
+
+				if (style.left != leftPosition) {
+					style.left = leftPosition + "";
+				}
+
+				if (canCenterHorizontally) {
+					transformValue += " translateX(" + translateX+ ")";
+				}
+				else {
+					transformValue += " translateX(" + 0 + ")";
+				}
+			}
+
+			style.transformOrigin = "0 0";
+			style.transform = transformValue;
+
+
+			self.viewScale = desiredScale;
+			self.viewToFitWidthScale = scaleNeededToFitWidth;
+			self.viewToFitHeightScale = scaleNeededToFitHeight;
+			self.viewLeft = leftPosition;
+			self.viewTop = topPosition;
+
+			self.updateSliderValue(desiredScale);
+			
+			return desiredScale;
+		}
+	}
+
+	/**
+	 * Returns true if view can be centered horizontally
+	 * @param {HTMLElement} view view
+	 * @param {String} type type of scaling - width, height, all, none
+	 * @param {Boolean} scaleUp if scale up enabled 
+	 * @param {Number} scale target scale value 
+	 */
+	self.canCenterHorizontally = function(view, type, scaleUp, scale, minimumScale, maximumScale) {
+		var scaleNeededToFit = self.getViewFitToViewportScale(view, scaleUp);
+		var scaleNeededToFitHeight = self.getViewFitToViewportHeightScale(view, scaleUp);
+		var scaleNeededToFitWidth = self.getViewFitToViewportWidthScale(view, scaleUp);
+		var canCenter = false;
+		var minScale;
+
+		type = type==null ? "none" : type;
+		scale = scale==null ? scale : scaleNeededToFitWidth;
+		scaleUp = scaleUp == null ? false : scaleUp;
+
+		if (type=="width") {
+	
+			if (scaleUp && maximumScale==null) {
+				canCenter = false;
+			}
+			else if (scaleNeededToFitWidth>=1) {
+				canCenter = true;
+			}
+		}
+		else if (type=="height") {
+			minScale = Math.min(1, scaleNeededToFitHeight);
+			if (minimumScale!="" && maximumScale!="") {
+				minScale = Math.max(minimumScale, Math.min(maximumScale, scaleNeededToFitHeight));
+			}
+			else {
+				if (minimumScale!="") {
+					minScale = Math.max(minimumScale, scaleNeededToFitHeight);
+				}
+				if (maximumScale!="") {
+					minScale = Math.max(minimumScale, Math.min(maximumScale, scaleNeededToFitHeight));
+				}
+			}
+	
+			if (scaleUp && maximumScale=="") {
+				canCenter = false;
+			}
+			else if (scaleNeededToFitWidth>=minScale) {
+				canCenter = true;
+			}
+		}
+		else if (type=="fit") {
+			canCenter = scaleNeededToFitWidth>=scaleNeededToFit;
+		}
+		else {
+			if (scaleUp) {
+				canCenter = false;
+			}
+			else if (scaleNeededToFitWidth>=1) {
+				canCenter = true;
+			}
+		}
+
+		self.horizontalScrollbarsNeeded = canCenter;
+		
+		return canCenter;
+	}
+
+	/**
+	 * Returns true if view can be centered horizontally
+	 * @param {HTMLElement} view view to scale
+	 * @param {String} type type of scaling
+	 * @param {Boolean} scaleUp if scale up enabled 
+	 * @param {Number} scale target scale value 
+	 */
+	self.canCenterVertically = function(view, type, scaleUp, scale, minimumScale, maximumScale) {
+		var scaleNeededToFit = self.getViewFitToViewportScale(view, scaleUp);
+		var scaleNeededToFitWidth = self.getViewFitToViewportWidthScale(view, scaleUp);
+		var scaleNeededToFitHeight = self.getViewFitToViewportHeightScale(view, scaleUp);
+		var canCenter = false;
+		var minScale;
+
+		type = type==null ? "none" : type;
+		scale = scale==null ? 1 : scale;
+		scaleUp = scaleUp == null ? false : scaleUp;
+	
+		if (type=="width") {
+			canCenter = scaleNeededToFitHeight>=scaleNeededToFitWidth;
+		}
+		else if (type=="height") {
+			minScale = Math.max(minimumScale, Math.min(maximumScale, scaleNeededToFit));
+			canCenter = scaleNeededToFitHeight>=minScale;
+		}
+		else if (type=="fit") {
+			canCenter = scaleNeededToFitHeight>=scaleNeededToFit;
+		}
+		else {
+			if (scaleUp) {
+				canCenter = false;
+			}
+			else if (scaleNeededToFitHeight>=1) {
+				canCenter = true;
+			}
+		}
+
+		self.verticalScrollbarsNeeded = canCenter;
+		
+		return canCenter;
+	}
+
+	self.getViewFitToViewportScale = function(view, scaleUp) {
+		var enableScaleUp = scaleUp;
+		var availableWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+		var availableHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+		var elementWidth = parseFloat(getComputedStyle(view, "style").width);
+		var elementHeight = parseFloat(getComputedStyle(view, "style").height);
+		var newScale = 1;
+
+		// if element is not added to the document computed values are NaN
+		if (isNaN(elementWidth) || isNaN(elementHeight)) {
+			return newScale;
+		}
+
+		availableWidth -= self.horizontalPadding;
+		availableHeight -= self.verticalPadding;
+
+		if (enableScaleUp) {
+			newScale = Math.min(availableHeight/elementHeight, availableWidth/elementWidth);
+		}
+		else if (elementWidth > availableWidth || elementHeight > availableHeight) {
+			newScale = Math.min(availableHeight/elementHeight, availableWidth/elementWidth);
+		}
+		
+		return newScale;
+	}
+
+	self.getViewFitToViewportWidthScale = function(view, scaleUp) {
+		// need to get browser viewport width when element
+		var isParentWindow = view && view.parentNode && view.parentNode===document.body;
+		var enableScaleUp = scaleUp;
+		var availableWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+		var elementWidth = parseFloat(getComputedStyle(view, "style").width);
+		var newScale = 1;
+
+		// if element is not added to the document computed values are NaN
+		if (isNaN(elementWidth)) {
+			return newScale;
+		}
+
+		availableWidth -= self.horizontalPadding;
+
+		if (enableScaleUp) {
+			newScale = availableWidth/elementWidth;
+		}
+		else if (elementWidth > availableWidth) {
+			newScale = availableWidth/elementWidth;
+		}
+		
+		return newScale;
+	}
+
+	self.getViewFitToViewportHeightScale = function(view, scaleUp) {
+		var enableScaleUp = scaleUp;
+		var availableHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+		var elementHeight = parseFloat(getComputedStyle(view, "style").height);
+		var newScale = 1;
+
+		// if element is not added to the document computed values are NaN
+		if (isNaN(elementHeight)) {
+			return newScale;
+		}
+
+		availableHeight -= self.verticalPadding;
+
+		if (enableScaleUp) {
+			newScale = availableHeight/elementHeight;
+		}
+		else if (elementHeight > availableHeight) {
+			newScale = availableHeight/elementHeight;
+		}
+		
+		return newScale;
+	}
+
+	self.keypressHandler = function(event) {
+		var rightKey = 39;
+		var leftKey = 37;
+		
+		// listen for both events 
+		if (event.type=="keypress") {
+			window.removeEventListener("keyup", self.keypressHandler);
+		}
+		else {
+			window.removeEventListener("keypress", self.keypressHandler);
+		}
+		
+		if (self.showNavigationControls) {
+			if (self.navigationOnKeypress) {
+				if (event.keyCode==rightKey) {
+					self.nextView();
+				}
+				if (event.keyCode==leftKey) {
+					self.previousView();
+				}
+			}
+		}
+		else if (self.navigationOnKeypress) {
+			if (event.keyCode==rightKey) {
+				self.nextView();
+			}
+			if (event.keyCode==leftKey) {
+				self.previousView();
+			}
+		}
+	}
+
+	///////////////////////////////////
+	// GENERAL FUNCTIONS
+	///////////////////////////////////
+
+	self.getViewById = function(id) {
+		id = id ? id.replace("#", "") : "";
+		var view = self.viewIds.indexOf(id)!=-1 && self.getElement(id);
+		return view;
+	}
+
+	self.getViewIds = function() {
+		var viewIds = self.getViewPreferenceValue(document.body, self.prefix + "view-ids");
+		var viewId = null;
+
+		viewIds = viewIds!=null && viewIds!="" ? viewIds.split(",") : [];
+
+		if (viewIds.length==0) {
+			viewId = self.getViewPreferenceValue(document.body, self.prefix + "view-id");
+			viewIds = viewId ? [viewId] : [];
+		}
+
+		return viewIds;
+	}
+
+	self.getInitialViewId = function() {
+		var viewId = self.getViewPreferenceValue(document.body, self.prefix + "view-id");
+		return viewId;
+	}
+
+	self.getApplicationStylesheet = function() {
+		var stylesheetId = self.getViewPreferenceValue(document.body, self.prefix + "stylesheet-id");
+		self.applicationStylesheet = document.getElementById("applicationStylesheet");
+		return self.applicationStylesheet.sheet;
+	}
+
+	self.getVisibleView = function() {
+		var viewIds = self.getViewIds();
+		
+		for (var i=0;i<viewIds.length;i++) {
+			var viewId = viewIds[i].replace(/[\#?\.?](.*)/, "$" + "1");
+			var view = self.getElement(viewId);
+			var postName = "_Class";
+
+			if (view==null && viewId && viewId.lastIndexOf(postName)!=-1) {
+				view = self.getElement(viewId.replace(postName, ""));
+			}
+			
+			if (view) {
+				var display = getComputedStyle(view).display;
+		
+				if (display=="block" || display=="flex") {
+					return view;
+				}
+			}
+		}
+
+		return null;
+	}
+
+	self.getVisibleViews = function() {
+		var viewIds = self.getViewIds();
+		var views = [];
+		
+		for (var i=0;i<viewIds.length;i++) {
+			var viewId = viewIds[i].replace(/[\#?\.?](.*)/, "$" + "1");
+			var view = self.getElement(viewId);
+			var postName = "_Class";
+
+			if (view==null && viewId && viewId.lastIndexOf(postName)!=-1) {
+				view = self.getElement(viewId.replace(postName, ""));
+			}
+			
+			if (view) {
+				var display = getComputedStyle(view).display;
+				
+				if (display=="none") {
+					continue;
+				}
+
+				if (display=="block" || display=="flex") {
+					views.push(view);
+				}
+			}
+		}
+
+		return views;
+	}
+
+	self.getStateNameByViewId = function(id) {
+		var state = self.viewsDictionary[id];
+		return state && state.stateName;
+	}
+
+	self.getMatchingViews = function(ids) {
+		var views = self.addedViews.slice(0);
+		var matchingViews = [];
+
+		if (self.showByMediaQuery) {
+			for (let index = 0; index < views.length; index++) {
+				var viewId = views[index];
+				var state = self.viewsDictionary[viewId];
+				var rule = state && state.rule; 
+				var matchResults = window.matchMedia(rule.conditionText);
+				var view = self.views[viewId];
+				
+				if (matchResults.matches) {
+					if (ids==true) {
+						matchingViews.push(viewId);
+					}
+					else {
+						matchingViews.push(view);
+					}
+				}
+			}
+		}
+
+		return matchingViews;
+	}
+
+	self.ruleMatchesQuery = function(rule) {
+		var result = window.matchMedia(rule.conditionText);
+		return result.matches;
+	}
+
+	self.getViewsByStateName = function(stateName, matchQuery) {
+		var views = self.addedViews.slice(0);
+		var matchingViews = [];
+
+		if (self.showByMediaQuery) {
+
+			// find state name
+			for (let index = 0; index < views.length; index++) {
+				var viewId = views[index];
+				var state = self.viewsDictionary[viewId];
+				var rule = state.rule;
+				var mediaRule = state.mediaRule;
+				var view = self.views[viewId];
+				var viewStateName = self.getStyleRuleValue(mediaRule, self.STATE_NAME, state);
+				var stateFoundAtt = view.getAttribute(self.STATE_NAME)==state;
+				var matchesResults = false;
+				
+				if (viewStateName==stateName) {
+					if (matchQuery) {
+						matchesResults = self.ruleMatchesQuery(rule);
+
+						if (matchesResults) {
+							matchingViews.push(view);
+						}
+					}
+					else {
+						matchingViews.push(view);
+					}
+				}
+			}
+		}
+
+		return matchingViews;
+	}
+
+	self.getInitialView = function() {
+		var viewId = self.getInitialViewId();
+		viewId = viewId.replace(/[\#?\.?](.*)/, "$" + "1");
+		var view = self.getElement(viewId);
+		var postName = "_Class";
+
+		if (view==null && viewId && viewId.lastIndexOf(postName)!=-1) {
+			view = self.getElement(viewId.replace(postName, ""));
+		}
+
+		return view;
+	}
+
+	self.getViewIndex = function(view) {
+		var viewIds = self.getViewIds();
+		var id = view ? view.id : null;
+		var index = id && viewIds ? viewIds.indexOf(id) : -1;
+
+		return index;
+	}
+
+	self.syncronizeViewToURL = function() {
+		var fragment = self.getHashFragment();
+
+		if (self.showByMediaQuery) {
+			var stateName = fragment;
+			
+			if (stateName==null || stateName=="") {
+				var initialView = self.getInitialView();
+				stateName = initialView ? self.getStateNameByViewId(initialView.id) : null;
+			}
+			
+			self.showMediaQueryViewsByState(stateName);
+			return;
+		}
+
+		var view = self.getViewById(fragment);
+		var index = view ? self.getViewIndex(view) : 0;
+		if (index==-1) index = 0;
+		var currentView = self.hideViews(index);
+
+		if (self.supportsPopState && currentView) {
+
+			if (fragment==null) {
+				window.history.replaceState({name:currentView.id}, null, "#"+ currentView.id);
+			}
+			else {
+				window.history.pushState({name:currentView.id}, null, "#"+ currentView.id);
+			}
+		}
+		
+		self.setViewVariables(view);
+		return view;
+	}
+
+	/**
+	 * Set the currentView or currentOverlay properties and set the lastView or lastOverlay properties
+	 */
+	self.setViewVariables = function(view, overlay, parentView) {
+		if (view) {
+			if (self.currentView) {
+				self.lastView = self.currentView;
+			}
+			self.currentView = view;
+		}
+
+		if (overlay) {
+			if (self.currentOverlay) {
+				self.lastOverlay = self.currentOverlay;
+			}
+			self.currentOverlay = overlay;
+		}
+	}
+
+	self.getViewPreferenceBoolean = function(view, property, altValue) {
+		var computedStyle = window.getComputedStyle(view);
+		var value = computedStyle.getPropertyValue(property);
+		var type = typeof value;
+		
+		if (value=="true" || (type=="string" && value.indexOf("true")!=-1)) {
+			return true;
+		}
+		else if (value=="" && arguments.length==3) {
+			return altValue;
+		}
+
+		return false;
+	}
+
+	self.getViewPreferenceValue = function(view, property, defaultValue) {
+		var value = window.getComputedStyle(view).getPropertyValue(property);
+
+		if (value===undefined) {
+			return defaultValue;
+		}
+		
+		value = value.replace(/^[\s\"]*/, "");
+		value = value.replace(/[\s\"]*$/, "");
+		value = value.replace(/^[\s"]*(.*?)[\s"]*$/, function (match, capture) { 
+			return capture;
+		});
+
+		return value;
+	}
+
+	self.getStyleRuleValue = function(cssRule, property) {
+		var value = cssRule ? cssRule.style.getPropertyValue(property) : null;
+
+		if (value===undefined) {
+			return null;
+		}
+		
+		value = value.replace(/^[\s\"]*/, "");
+		value = value.replace(/[\s\"]*$/, "");
+		value = value.replace(/^[\s"]*(.*?)[\s"]*$/, function (match, capture) { 
+			return capture;
+		});
+
+		return value;
+	}
+
+	/**
+	 * Get the first defined value of property. Returns empty string if not defined
+	 * @param {String} id id of element
+	 * @param {String} property 
+	 */
+	self.getCSSPropertyValueForElement = function(id, property) {
+		var styleSheets = document.styleSheets;
+		var numOfStylesheets = styleSheets.length;
+		var values = [];
+		var selectorIDText = "#" + id;
+		var selectorClassText = "." + id + "_Class";
+		var value;
+
+		for(var i=0;i<numOfStylesheets;i++) {
+			var styleSheet = styleSheets[i];
+			var cssRules = self.getStylesheetRules(styleSheet);
+			var numOfCSSRules = cssRules.length;
+			var cssRule;
+			
+			for (var j=0;j<numOfCSSRules;j++) {
+				cssRule = cssRules[j];
+				
+				if (cssRule.media) {
+					var mediaRules = cssRule.cssRules;
+					var numOfMediaRules = mediaRules ? mediaRules.length : 0;
+					
+					for(var k=0;k<numOfMediaRules;k++) {
+						var mediaRule = mediaRules[k];
+						
+						if (mediaRule.selectorText==selectorIDText || mediaRule.selectorText==selectorClassText) {
+							
+							if (mediaRule.style && mediaRule.style.getPropertyValue(property)!="") {
+								value = mediaRule.style.getPropertyValue(property);
+								values.push(value);
+							}
+						}
+					}
+				}
+				else {
+
+					if (cssRule.selectorText==selectorIDText || cssRule.selectorText==selectorClassText) {
+						if (cssRule.style && cssRule.style.getPropertyValue(property)!="") {
+							value = cssRule.style.getPropertyValue(property);
+							values.push(value);
+						}
+					}
+				}
+			}
+		}
+
+		return values.pop();
+	}
+
+	self.getIsStyleDefined = function(id, property) {
+		var value = self.getCSSPropertyValueForElement(id, property);
+		return value!==undefined && value!="";
+	}
+
+	self.collectViews = function() {
+		var viewIds = self.getViewIds();
+
+		for (let index = 0; index < viewIds.length; index++) {
+			const id = viewIds[index];
+			const view = self.getElement(id);
+			self.views[id] = view;
+		}
+		
+		self.viewIds = viewIds;
+	}
+
+	self.collectOverlays = function() {
+		var viewIds = self.getViewIds();
+		var ids = [];
+
+		for (let index = 0; index < viewIds.length; index++) {
+			const id = viewIds[index];
+			const view = self.getViewById(id);
+			const isOverlay = view && self.isOverlay(view);
+			
+			if (isOverlay) {
+				ids.push(id);
+				self.overlays[id] = view;
+			}
+		}
+		
+		self.overlayIds = ids;
+	}
+
+	self.collectMediaQueries = function() {
+		var viewIds = self.getViewIds();
+		var styleSheet = self.getApplicationStylesheet();
+		var cssRules = self.getStylesheetRules(styleSheet);
+		var numOfCSSRules = cssRules ? cssRules.length : 0;
+		var cssRule;
+		var id = viewIds.length ? viewIds[0]: ""; // single view
+		var selectorIDText = "#" + id;
+		var selectorClassText = "." + id + "_Class";
+		var viewsNotFound = viewIds.slice();
+		var viewsFound = [];
+		var selectorText = null;
+		var property = self.prefix + "view-id";
+		var stateName = self.prefix + "state";
+		var stateValue = null;
+		var view = null;
+		
+		for (var j=0;j<numOfCSSRules;j++) {
+			cssRule = cssRules[j];
+			
+			if (cssRule.media) {
+				var mediaRules = cssRule.cssRules;
+				var numOfMediaRules = mediaRules ? mediaRules.length : 0;
+				var mediaViewInfoFound = false;
+				var mediaId = null;
+				
+				for(var k=0;k<numOfMediaRules;k++) {
+					var mediaRule = mediaRules[k];
+
+					selectorText = mediaRule.selectorText;
+					
+					if (selectorText==".mediaViewInfo" && mediaViewInfoFound==false) {
+
+						mediaId = self.getStyleRuleValue(mediaRule, property);
+						stateValue = self.getStyleRuleValue(mediaRule, stateName);
+
+						selectorIDText = "#" + mediaId;
+						selectorClassText = "." + mediaId + "_Class";
+						view = self.getElement(mediaId);
+						
+						// prevent duplicates from load and domcontentloaded events
+						if (self.addedViews.indexOf(mediaId)==-1) {
+							self.addView(view, mediaId, cssRule, mediaRule, stateValue);
+						}
+
+						viewsFound.push(mediaId);
+
+						if (viewsNotFound.indexOf(mediaId)!=-1) {
+							viewsNotFound.splice(viewsNotFound.indexOf(mediaId));
+						}
+
+						mediaViewInfoFound = true;
+					}
+
+					if (selectorIDText==selectorText || selectorClassText==selectorText) {
+						var styleObject = self.viewsDictionary[mediaId];
+						if (styleObject) {
+							styleObject.styleDeclaration = mediaRule;
+						}
+						break;
+					}
+				}
+			}
+			else {
+				selectorText = cssRule.selectorText;
+				
+				if (selectorText==null) continue;
+
+				selectorText = selectorText.replace(/[#|\s|*]?/g, "");
+
+				if (viewIds.indexOf(selectorText)!=-1) {
+					view = self.getElement(selectorText);
+					self.addView(view, selectorText, cssRule, null, stateValue);
+
+					if (viewsNotFound.indexOf(selectorText)!=-1) {
+						viewsNotFound.splice(viewsNotFound.indexOf(selectorText));
+					}
+
+					break;
+				}
+			}
+		}
+
+		if (viewsNotFound.length) {
+			console.log("Could not find the following views:" + viewsNotFound.join(",") + "");
+			console.log("Views found:" + viewsFound.join(",") + "");
+		}
+	}
+
+	/**
+	 * Adds a view
+	 * @param {HTMLElement} view view element
+	 * @param {String} id id of view element
+	 * @param {CSSRule} cssRule of view element
+	 * @param {CSSMediaRule} mediaRule media rule of view element
+	 * @param {String} stateName name of state if applicable
+	 **/
+	self.addView = function(view, viewId, cssRule, mediaRule, stateName) {
+		var viewData = {};
+		viewData.name = viewId;
+		viewData.rule = cssRule;
+		viewData.id = viewId;
+		viewData.mediaRule = mediaRule;
+		viewData.stateName = stateName;
+
+		self.views.push(viewData);
+		self.addedViews.push(viewId);
+		self.viewsDictionary[viewId] = viewData;
+		self.mediaQueryDictionary[viewId] = cssRule;
+	}
+
+	self.hasView = function(name) {
+
+		if (self.addedViews.indexOf(name)!=-1) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Go to view by id. Views are added in addView()
+	 * @param {String} id id of view in current
+	 * @param {Boolean} maintainPreviousState if true then do not hide other views
+	 * @param {String} parent id of parent view
+	 **/
+	self.goToView = function(id, maintainPreviousState, parent) {
+		var state = self.viewsDictionary[id];
+
+		if (state) {
+			if (maintainPreviousState==false || maintainPreviousState==null) {
+				self.hideViews();
+			}
+			self.enableMediaQuery(state.rule);
+			self.updateViewLabel();
+			self.updateURL();
+			var event = new Event(self.VIEW_CHANGING);
+			self.stateName = id;
+			window.dispatchEvent(event);
+		}
+		else {
+			var event = new Event(self.STATE_NOT_FOUND);
+			self.stateName = id;
+			window.dispatchEvent(event);
+		}
+	}
+
+	/**
+	 * Go to the view in the event targets CSS variable
+	 **/
+	self.goToTargetView = function(event) {
+		var button = event.currentTarget;
+		var buttonComputedStyles = getComputedStyle(button);
+		var actionTargetValue = buttonComputedStyles.getPropertyValue(self.prefix+"action-target").trim();
+		var animation = buttonComputedStyles.getPropertyValue(self.prefix+"animation").trim();
+		var targetType = buttonComputedStyles.getPropertyValue(self.prefix+"action-type").trim();
+		var targetView = self.application ? null : self.getElement(actionTargetValue);
+		var targetState = targetView ? self.getStateNameByViewId(targetView.id) : null;
+		var actionTargetStyles = targetView ? targetView.style : null;
+		var state = self.viewsDictionary[actionTargetValue];
+		
+		// navigate to page
+		if (self.application==false || targetType=="page") {
+			document.location.href = "./" + actionTargetValue;
+			return;
+		}
+
+		// if view is found
+		if (targetView) {
+
+			if (self.currentOverlay) {
+				self.removeOverlay(false);
+			}
+
+			if (self.showByMediaQuery) {
+				var stateName = targetState;
+				
+				if (stateName==null || stateName=="") {
+					var initialView = self.getInitialView();
+					stateName = initialView ? self.getStateNameByViewId(initialView.id) : null;
+				}
+				self.showMediaQueryViewsByState(stateName, event);
+				return;
+			}
+
+			// add animation set in event target style declaration
+			if (animation && self.supportAnimations) {
+				self.crossFade(self.currentView, targetView, false, animation);
+			}
+			else {
+				self.setViewVariables(self.currentView);
+				self.hideViews();
+				self.enableMediaQuery(state.rule);
+				self.scaleViewIfNeeded(targetView);
+				self.centerView(targetView);
+				self.updateViewLabel();
+				self.updateURL();
+			}
+		}
+		else {
+			var stateEvent = new Event(self.STATE_NOT_FOUND);
+			self.stateName = name;
+			window.dispatchEvent(stateEvent);
+		}
+
+		event.stopImmediatePropagation();
+	}
+
+	/**
+	 * Cross fade between views
+	 **/
+	self.crossFade = function(from, to, update, animation) {
+		var targetIndex = to.parentNode
+		var fromIndex = Array.prototype.slice.call(from.parentElement.children).indexOf(from);
+		var toIndex = Array.prototype.slice.call(to.parentElement.children).indexOf(to);
+
+		if (from.parentNode==to.parentNode) {
+			var reverse = self.getReverseAnimation(animation);
+			var duration = self.getAnimationDuration(animation, true);
+
+			// if target view is above (higher index)
+			// then fade in target view 
+			// and after fade in then hide previous view instantly
+			if (fromIndex<toIndex) {
+				self.setElementAnimation(from, null);
+				self.setElementAnimation(to, null);
+				self.showViewByMediaQuery(to);
+				self.fadeIn(to, update, animation);
+
+				setTimeout(function() {
+					self.setElementAnimation(to, null);
+					self.setElementAnimation(from, null);
+					self.hideView(from);
+					self.updateURL();
+					self.setViewVariables(to);
+					self.updateViewLabel();
+				}, duration)
+			}
+			// if target view is on bottom
+			// then show target view instantly 
+			// and fade out current view
+			else if (fromIndex>toIndex) {
+				self.setElementAnimation(to, null);
+				self.setElementAnimation(from, null);
+				self.showViewByMediaQuery(to);
+				self.fadeOut(from, update, reverse);
+
+				setTimeout(function() {
+					self.setElementAnimation(to, null);
+					self.setElementAnimation(from, null);
+					self.hideView(from);
+					self.updateURL();
+					self.setViewVariables(to);
+				}, duration)
+			}
+		}
+	}
+
+	self.fadeIn = function(element, update, animation) {
+		self.showViewByMediaQuery(element);
+
+		if (update) {
+			self.updateURL(element);
+
+			element.addEventListener("animationend", function(event) {
+				element.style.animation = null;
+				self.setViewVariables(element);
+				self.updateViewLabel();
+				element.removeEventListener("animationend", arguments.callee);
+			});
+		}
+
+		self.setElementAnimation(element, null);
+		
+		element.style.animation = animation;
+	}
+
+	self.fadeOutCurrentView = function(animation, update) {
+		if (self.currentView) {
+			self.fadeOut(self.currentView, update, animation);
+		}
+		if (self.currentOverlay) {
+			self.fadeOut(self.currentOverlay, update, animation);
+		}
+	}
+
+	self.fadeOut = function(element, update, animation) {
+		if (update) {
+			element.addEventListener("animationend", function(event) {
+				element.style.animation = null;
+				self.hideView(element);
+				element.removeEventListener("animationend", arguments.callee);
+			});
+		}
+
+		element.style.animationPlayState = "paused";
+		element.style.animation = animation;
+		element.style.animationPlayState = "running";
+	}
+
+	self.getReverseAnimation = function(animation) {
+		if (animation && animation.indexOf("reverse")==-1) {
+			animation += " reverse";
+		}
+
+		return animation;
+	}
+
+	/**
+	 * Get duration in animation string
+	 * @param {String} animation animation value
+	 * @param {Boolean} inMilliseconds length in milliseconds if true
+	 */
+	self.getAnimationDuration = function(animation, inMilliseconds) {
+		var duration = 0;
+		var expression = /.+(\d\.\d)s.+/;
+
+		if (animation && animation.match(expression)) {
+			duration = parseFloat(animation.replace(expression, "$" + "1"));
+			if (duration && inMilliseconds) duration = duration * 1000;
+		}
+
+		return duration;
+	}
+
+	self.setElementAnimation = function(element, animation, priority) {
+		element.style.setProperty("animation", animation, "important");
+	}
+
+	self.getElement = function(id) {
+		id = id ? id.trim() : id;
+		var element = id ? document.getElementById(id) : null;
+
+		return element;
+	}
+
+	self.getElementById = function(id) {
+		id = id ? id.trim() : id;
+		var element = id ? document.getElementById(id) : null;
+
+		return element;
+	}
+
+	self.getElementByClass = function(className) {
+		className = className ? className.trim() : className;
+		var elements = document.getElementsByClassName(className);
+
+		return elements.length ? elements[0] : null;
+	}
+
+	self.resizeHandler = function(event) {
+		
+		if (self.showByMediaQuery) {
+			if (self.enableDeepLinking) {
+				var stateName = self.getHashFragment();
+
+				if (stateName==null || stateName=="") {
+					var initialView = self.getInitialView();
+					stateName = initialView ? self.getStateNameByViewId(initialView.id) : null;
+				}
+				self.showMediaQueryViewsByState(stateName, event);
+			}
+		}
+		else {
+			var visibleViews = self.getVisibleViews();
+
+			for (let index = 0; index < visibleViews.length; index++) {	
+				var view = visibleViews[index];
+				self.scaleViewIfNeeded(view);
+			}
+		}
+
+		window.dispatchEvent(new Event(self.APPLICATION_RESIZE));
+	}
+
+	self.scaleViewIfNeeded = function(view) {
+
+		if (self.scaleViewsOnResize) {
+			if (view==null) {
+				view = self.getVisibleView();
+			}
+
+			var isViewScaled = view.getAttributeNS(null, self.SIZE_STATE_NAME)=="false" ? false : true;
+
+			if (isViewScaled) {
+				self.scaleViewToFit(view, true);
+			}
+			else {
+				self.scaleViewToActualSize(view);
+			}
+		}
+		else if (view) {
+			self.centerView(view);
+		}
+	}
+
+	self.centerView = function(view) {
+
+		if (self.scaleViewsToFit) {
+			self.scaleViewToFit(view, true);
+		}
+		else {
+			self.scaleViewToActualSize(view);  // for centering support for now
+		}
+	}
+
+	self.preventDoubleClick = function(event) {
+		event.stopImmediatePropagation();
+	}
+
+	self.getHashFragment = function() {
+		var value = window.location.hash ? window.location.hash.replace("#", "") : "";
+		return value;
+	}
+
+	self.showBlockElement = function(view) {
+		view.style.display = "block";
+	}
+
+	self.hideElement = function(view) {
+		view.style.display = "none";
+	}
+
+	self.showStateFunction = null;
+
+	self.showMediaQueryViewsByState = function(state, event) {
+		// browser will hide and show by media query (small, medium, large)
+		// but if multiple views exists at same size user may want specific view
+		// if showStateFunction is defined that is called with state fragment and user can show or hide each media matching view by returning true or false
+		// if showStateFunction is not defined and state is defined and view has a defined state that matches then show that and hide other matching views
+		// if no state is defined show view 
+		// an viewChanging event is dispatched before views are shown or hidden that can be prevented 
+
+		// get all matched queries
+		// if state name is specified then show that view and hide other views
+		// if no state name is defined then show
+		var matchedViews = self.getMatchingViews();
+		var matchMediaQuery = true;
+		var foundViews = self.getViewsByStateName(state, matchMediaQuery);
+		var showViews = [];
+		var hideViews = [];
+
+		// loop views that match media query 
+		for (let index = 0; index < matchedViews.length; index++) {
+			var view = matchedViews[index];
+			
+			// let user determine visible view
+			if (self.showStateFunction!=null) {
+				if (self.showStateFunction(view, state)) {
+					showViews.push(view);
+				}
+				else {
+					hideViews.push(view);
+				}
+			}
+			// state was defined so check if view matches state
+			else if (foundViews.length) {
+
+				if (foundViews.indexOf(view)!=-1) {
+					showViews.push(view);
+				}
+				else {
+					hideViews.push(view);
+				}
+			}
+			// if no state names are defined show view (define unused state name to exclude)
+			else if (state==null || state=="") {
+				showViews.push(view);
+			}
+		}
+
+		if (showViews.length) {
+			var viewChangingEvent = new Event(self.VIEW_CHANGING);
+			viewChangingEvent.showViews = showViews;
+			viewChangingEvent.hideViews = hideViews;
+			window.dispatchEvent(viewChangingEvent);
+
+			if (viewChangingEvent.defaultPrevented==false) {
+				for (var index = 0; index < hideViews.length; index++) {
+					var view = hideViews[index];
+
+					if (self.isOverlay(view)) {
+						self.removeOverlay(view);
+					}
+					else {
+						self.hideElement(view);
+					}
+				}
+
+				for (var index = 0; index < showViews.length; index++) {
+					var view = showViews[index];
+
+					if (index==showViews.length-1) {
+						self.clearDisplay(view);
+						self.setViewOptions(view);
+						self.setViewVariables(view);
+						self.centerView(view);
+						self.updateURLState(view, state);
+					}
+				}
+			}
+
+			var viewChangeEvent = new Event(self.VIEW_CHANGE);
+			viewChangeEvent.showViews = showViews;
+			viewChangeEvent.hideViews = hideViews;
+			window.dispatchEvent(viewChangeEvent);
+		}
+		
+	}
+
+	self.clearDisplay = function(view) {
+		view.style.setProperty("display", null);
+	}
+
+	self.hashChangeHandler = function(event) {
+		var fragment = self.getHashFragment();
+		var view = self.getViewById(fragment);
+
+		if (self.showByMediaQuery) {
+			var stateName = fragment;
+
+			if (stateName==null || stateName=="") {
+				var initialView = self.getInitialView();
+				stateName = initialView ? self.getStateNameByViewId(initialView.id) : null;
+			}
+			self.showMediaQueryViewsByState(stateName);
+		}
+		else {
+			if (view) {
+				self.hideViews();
+				self.showView(view);
+				self.setViewVariables(view);
+				self.updateViewLabel();
+				
+				window.dispatchEvent(new Event(self.VIEW_CHANGE));
+			}
+			else {
+				window.dispatchEvent(new Event(self.VIEW_NOT_FOUND));
+			}
+		}
+	}
+
+	self.popStateHandler = function(event) {
+		var state = event.state;
+		var fragment = state ? state.name : window.location.hash;
+		var view = self.getViewById(fragment);
+
+		if (view) {
+			self.hideViews();
+			self.showView(view);
+			self.updateViewLabel();
+		}
+		else {
+			window.dispatchEvent(new Event(self.VIEW_NOT_FOUND));
+		}
+	}
+
+	self.doubleClickHandler = function(event) {
+		var view = self.getVisibleView();
+		var scaleValue = view ? self.getViewScaleValue(view) : 1;
+		var scaleNeededToFit = view ? self.getViewFitToViewportScale(view) : 1;
+		var scaleNeededToFitWidth = view ? self.getViewFitToViewportWidthScale(view) : 1;
+		var scaleNeededToFitHeight = view ? self.getViewFitToViewportHeightScale(view) : 1;
+		var scaleToFitType = self.scaleToFitType;
+
+		// Three scenarios
+		// - scale to fit on double click
+		// - set scale to actual size on double click
+		// - switch between scale to fit and actual page size
+
+		if (scaleToFitType=="width") {
+			scaleNeededToFit = scaleNeededToFitWidth;
+		}
+		else if (scaleToFitType=="height") {
+			scaleNeededToFit = scaleNeededToFitHeight;
+		}
+
+		// if scale and actual size enabled then switch between
+		if (self.scaleToFitOnDoubleClick && self.actualSizeOnDoubleClick) {
+			var isViewScaled = view.getAttributeNS(null, self.SIZE_STATE_NAME);
+			var isScaled = false;
+			
+			// if scale is not 1 then view needs scaling
+			if (scaleNeededToFit!=1) {
+
+				// if current scale is at 1 it is at actual size
+				// scale it to fit
+				if (scaleValue==1) {
+					self.scaleViewToFit(view);
+					isScaled = true;
+				}
+				else {
+					// scale is not at 1 so switch to actual size
+					self.scaleViewToActualSize(view);
+					isScaled = false;
+				}
+			}
+			else {
+				// view is smaller than viewport 
+				// so scale to fit() is scale actual size
+				// actual size and scaled size are the same
+				// but call scale to fit to retain centering
+				self.scaleViewToFit(view);
+				isScaled = false;
+			}
+			
+			view.setAttributeNS(null, self.SIZE_STATE_NAME, isScaled+"");
+			isViewScaled = view.getAttributeNS(null, self.SIZE_STATE_NAME);
+		}
+		else if (self.scaleToFitOnDoubleClick) {
+			self.scaleViewToFit(view);
+		}
+		else if (self.actualSizeOnDoubleClick) {
+			self.scaleViewToActualSize(view);
+		}
+
+	}
+
+	self.scaleViewToFit = function(view) {
+		return self.setViewScaleValue(view, true);
+	}
+
+	self.scaleViewToActualSize = function(view) {
+		self.setViewScaleValue(view, false, 1);
+	}
+
+	self.onloadHandler = function(event) {
+		self.initialize();
+	}
+
+	self.setElementHTML = function(id, value) {
+		var element = self.getElement(id);
+		element.innerHTML = value;
+	}
+
+	self.getStackArray = function(error) {
+		var value = "";
+		
+		if (error==null) {
+		  try {
+			 error = new Error("Stack");
+		  }
+		  catch (e) {
+			 
+		  }
+		}
+		
+		if ("stack" in error) {
+		  value = error.stack;
+		  var methods = value.split(/\n/g);
+	 
+		  var newArray = methods ? methods.map(function (value, index, array) {
+			 value = value.replace(/\@.*/,"");
+			 return value;
+		  }) : null;
+	 
+		  if (newArray && newArray[0].includes("getStackTrace")) {
+			 newArray.shift();
+		  }
+		  if (newArray && newArray[0].includes("getStackArray")) {
+			 newArray.shift();
+		  }
+		  if (newArray && newArray[0]=="") {
+			 newArray.shift();
+		  }
+	 
+			return newArray;
+		}
+		
+		return null;
+	}
+
+	self.log = function(value) {
+		console.log.apply(this, [value]);
+	}
+	
+	// initialize on load
+	// sometimes the body size is 0 so we call this now and again later
+	window.addEventListener("load", self.onloadHandler);
+	window.document.addEventListener("DOMContentLoaded", self.onloadHandler);
+}
+
+window.application = new Application();
+</script>
+</head>
+<body>
+	<div id="Sem_conexo_de_internet" onclick="application.goToTargetView(event)">
+	<div id="aui">
+		<span>Ops! Sem conexão com a internet</span><br/><span style="font-style:normal;font-weight:normal;">Toque na tela para tentar novamente</span>
+	</div>
+	<div id="auj">
+		<div id="auk">
+			<div id="aul">
+				<div id="aum">
+					<svg class="aun" viewBox="1 1 70 142">
+						<path id="aun" d="M 25.25795364379883 1.17309308052063 C 28.12252998352051 0.8231214284896851 31.17990493774414 0.9466599822044373 33.84387588500977 2.07736611366272 C 39.50854110717773 4.482008457183838 41.11873245239258 11.17414379119873 41.04104995727539 16.61351776123047 C 40.95730590820312 22.46804046630859 39.71405029296875 28.8626594543457 44.16511535644531 33.57979202270508 C 46.211181640625 35.74845504760742 48.75632858276367 37.40811538696289 50.76543045043945 39.61660003662109 C 52.91218566894531 41.97666549682617 54.59663009643555 44.67704772949219 55.84383392333984 47.57682800292969 C 58.13385009765625 52.90317916870117 59.25783157348633 59.16689682006836 57.16373443603516 64.7542724609375 C 55.31992340087891 69.67362976074219 50.68109512329102 74.11376953125 51.68343353271484 79.70755767822266 C 52.72895812988281 85.54291534423828 58.61220932006836 90.00409698486328 62.29044342041016 94.35052490234375 C 66.45316314697266 99.26931762695312 70.28590393066406 105.5559844970703 70.91553497314453 112.0064697265625 C 71.519287109375 118.1883239746094 68.82840728759766 124.4403839111328 64.69876861572266 129.1133575439453 C 56.4477424621582 138.4507446289062 44.045166015625 143.0282287597656 31.53956413269043 142.9998626708984 C 26.23002624511719 142.9875640869141 20.21855163574219 142.7477722167969 15.63656234741211 139.8945159912109 C 14.22043228149414 139.0125885009766 13.47333335876465 138.0231628417969 12.63148307800293 136.647705078125 C 11.87667465209961 135.4143218994141 10.87957859039307 134.612060546875 9.725460052490234 133.7393188476562 C 7.189864635467529 131.8223876953125 5.358715534210205 129.2388458251953 4.190121650695801 126.3468322753906 C -0.347779780626297 115.1140213012695 3.279166698455811 101.2176666259766 9.63120174407959 91.24284362792969 C 11.13635349273682 88.87960815429688 12.36864566802979 86.60546112060547 11.63743686676025 83.78861999511719 C 10.87439823150635 80.84818267822266 8.999014854431152 78.19606018066406 7.340259075164795 75.66850280761719 C 5.701145172119141 73.17048645019531 3.829878568649292 70.78741455078125 2.548757553100586 68.08650970458984 C 1.206992864608765 65.25711822509766 0.8291627168655396 62.29427719116211 1.066237449645996 59.19774627685547 C 1.511803269386292 53.3811149597168 4.022732257843018 48.01348114013672 7.577661514282227 43.33562469482422 C 11.00171566009521 38.82982635498047 15.02212810516357 34.51847457885742 15.03113651275635 28.61452293395996 C 15.04102897644043 22.35713768005371 10.85773181915283 16.79080772399902 12.63987827301025 10.42897891998291 C 13.37780284881592 7.794661521911621 14.85995388031006 5.091835498809814 17.24855041503906 3.51252293586731 C 19.53925704956055 1.997846126556396 22.5638542175293 1.502237200737 25.25795364379883 1.17309308052063 Z">
+						</path>
+					</svg>
+					<svg class="auo" viewBox="22 10 22 129">
+						<path id="auo" d="M 23.38615989685059 11.17643070220947 C 23.43987846374512 10.33604049682617 24.43674850463867 9.832005500793457 25.22150802612305 10.05130100250244 C 26.25446701049805 10.34009742736816 26.23460006713867 11.30527114868164 26.20732879638672 12.1651668548584 C 26.12372970581055 14.80827808380127 26.50629615783691 17.37695121765137 27.14165496826172 19.94152069091797 C 28.46218299865723 25.2735424041748 30.9026927947998 30.18612480163574 32.83618927001953 35.30795669555664 C 34.76800155639648 40.42549896240234 35.67483520507812 45.70920562744141 34.54155349731445 51.12429809570312 C 33.47320556640625 56.22997283935547 31.79480171203613 61.20331573486328 30.70145034790039 66.31543731689453 C 29.73775291442871 70.82111358642578 28.71232986450195 75.57260131835938 30.1799201965332 80.06680297851562 C 31.59210395812988 84.39280700683594 34.7142448425293 87.91585540771484 36.96245574951172 91.82529449462891 C 41.61651611328125 99.91807556152344 43.68126678466797 108.8960571289062 43.95743560791016 118.1351852416992 C 44.08542251586914 122.4254837036133 43.97016906738281 126.7552261352539 42.97486877441406 130.9630737304688 C 42.40200805664062 133.3859710693359 41.63217926025391 136.660400390625 39.55592346191406 138.3331604003906 C 38.5985107421875 139.1045684814453 36.96102905273438 139.3713073730469 36.15522003173828 138.2289428710938 C 35.398681640625 137.1575012207031 36.06237030029297 135.4988098144531 36.30254745483398 134.3568115234375 C 37.34267425537109 129.413330078125 37.55192565917969 124.3612899780273 37.30290222167969 119.3416976928711 C 37.0618896484375 114.4795608520508 36.48743057250977 109.6255493164062 34.95718002319336 104.9820098876953 C 33.53690719604492 100.672737121582 31.37924766540527 96.80217742919922 28.83981132507324 93.03247833251953 C 26.25214385986328 89.19089508056641 23.56203651428223 85.34111022949219 22.49282264709473 80.78923034667969 C 21.40646934509277 76.1661376953125 22.28902244567871 71.46198272705078 23.4691162109375 66.92717742919922 C 24.71709632873535 62.13063430786133 26.35175323486328 57.47168731689453 28.04169845581055 52.80510330200195 C 29.68860626220703 48.25786209106445 30.2723560333252 43.95536422729492 29.36319351196289 39.19615173339844 C 27.56718635559082 29.79352951049805 22.75980186462402 20.96811676025391 23.38615989685059 11.17643070220947 Z">
+						</path>
+					</svg>
+				</div>
+				<div id="aup">
+					<svg class="auq" viewBox="0 0 104 178">
+						<path id="auq" d="M 90.892333984375 1.582273483276367 C 94.43717956542969 2.658604860305786 97.9578857421875 4.395218849182129 100.4848098754883 7.118279457092285 C 105.85791015625 12.90895843505859 104.2092971801758 21.66090965270996 101.2431411743164 28.05324554443359 C 98.05043792724609 34.93339157104492 93.21226501464844 41.84906387329102 95.93963623046875 49.74320983886719 C 97.19319915771484 53.37234115600586 99.30117034912109 56.65913772583008 100.4903259277344 60.31613159179688 C 101.7608184814453 64.22399139404297 102.3091888427734 68.2938232421875 102.2393264770508 72.37200164794922 C 102.1099853515625 79.86240386962891 100.1175384521484 87.85475921630859 94.70809936523438 93.37314605712891 C 89.94529724121094 98.23171234130859 82.15751647949219 101.0695114135742 80.37650299072266 108.2063064575195 C 78.51845550537109 115.6512680053711 83.06092071533203 123.9877777099609 85.07777404785156 131.0414733886719 C 87.3603515625 139.0241088867188 88.53288269042969 148.4527587890625 85.86190032958984 156.4088134765625 C 83.30255126953125 164.0337219238281 76.84181213378906 170.0277252197266 69.5281982421875 173.4057769775391 C 54.91516494750977 180.1560363769531 37.94867324829102 179.1174011230469 23.29581832885742 172.5781555175781 C 17.07475280761719 169.8014678955078 10.15063095092773 166.3905792236328 6.284528732299805 160.6325836181641 C 5.089696407318115 158.8529052734375 4.736399173736572 157.2941131591797 4.476005077362061 155.2295227050781 C 4.242607593536377 153.3782196044922 3.497157335281372 151.9107360839844 2.604787111282349 150.2782135009766 C 0.6439958810806274 146.6921234130859 -0.1381965130567551 142.6841430664062 0.01976625435054302 138.6560516357422 C 0.6344857811927795 123.0111236572266 12.23362350463867 108.4637451171875 24.95624732971191 99.97173309326172 C 27.97076034545898 97.95991516113281 30.61814308166504 95.91152191162109 31.24938201904297 92.19985961914062 C 31.90861701965332 88.32546997070312 31.11078453063965 84.21338653564453 30.50119972229004 80.36130523681641 C 29.8990364074707 76.55438232421875 28.96382522583008 72.76262664794922 28.88879013061523 68.90200042724609 C 28.81053924560547 64.85787200927734 29.93342971801758 61.15737915039062 31.84820175170898 57.61867141723633 C 35.44525527954102 50.97156524658203 41.22745513916016 45.92990493774414 47.86957550048828 42.24710083007812 C 54.26725006103516 38.69969940185547 61.26161193847656 35.69248962402344 64.39278411865234 28.71500778198242 C 67.71179962158203 21.32000541687012 65.74735260009766 12.56087303161621 71.20025634765625 5.964320659637451 C 73.45817565917969 3.232793092727661 76.62519836425781 0.8074085712432861 80.26155090332031 0.1822732090950012 C 83.74893188476562 -0.4173457026481628 87.55844116210938 0.5699966549873352 90.892333984375 1.582273483276367 Z">
+						</path>
+					</svg>
+					<svg class="aur" viewBox="32 13 55 160">
+						<path id="aur" d="M 83.65125274658203 13.81088161468506 C 84.15419769287109 12.84381580352783 85.58382415771484 12.76941013336182 86.38660430908203 13.44042301177979 C 87.44319915771484 14.32383060455322 86.91448211669922 15.45641136169434 86.43224334716797 16.46043586730957 C 84.95022583007812 19.54668617248535 84.05228424072266 22.78911399841309 83.45208740234375 26.15917587280273 C 82.20366668701172 33.16567230224609 82.48453521728516 40.26247024536133 82.06295013427734 47.34132766723633 C 81.64164733886719 54.41422271728516 79.93479919433594 61.14667510986328 75.77362060546875 66.96543121337891 C 71.85041809082031 72.45179748535156 67.28318023681641 77.46170043945312 63.32736587524414 82.94259643554688 C 59.84076309204102 87.77327728271484 56.15325164794922 92.86270141601562 55.51558685302734 98.95410919189453 C 54.90122604370117 104.8172760009766 56.70685958862305 110.6258087158203 57.28824234008789 116.4338531494141 C 58.49187469482422 128.4569396972656 56.20420455932617 140.1711730957031 51.68836212158203 151.2572326660156 C 49.5910758972168 156.405029296875 47.18870544433594 161.4720611572266 43.82113647460938 165.9334869384766 C 41.88235473632812 168.5025024414062 39.26728439331055 171.9766998291016 35.96342849731445 172.8694305419922 C 34.43991470336914 173.2811431884766 32.38549423217773 172.73876953125 32.04153823852539 170.9635925292969 C 31.71805381774902 169.2982330322266 33.36281585693359 167.6818084716797 34.24174118041992 166.4553070068359 C 38.04700469970703 161.1462249755859 40.93756866455078 155.2730865478516 43.27527618408203 149.1981811523438 C 45.53988265991211 143.3139495849609 47.41033172607422 137.2645721435547 48.05294036865234 130.9634704589844 C 48.64907836914062 125.1158752441406 48.15322494506836 119.4013214111328 47.15812683105469 113.6061248779297 C 46.14428329467773 107.7005081176758 45.01494598388672 101.7314987182617 46.14864349365234 95.78059387207031 C 47.29959487915039 89.73636627197266 50.79525756835938 84.62812042236328 54.55014801025391 79.87636566162109 C 58.5214958190918 74.85022735595703 62.8729248046875 70.18971252441406 67.29300689697266 65.54913330078125 C 71.60025787353516 61.02732086181641 74.53616333007812 56.23811340332031 75.96559906005859 50.12556457519531 C 78.78990936279297 38.04930877685547 77.79068756103516 25.07824897766113 83.65125274658203 13.81088161468506 Z">
+						</path>
+					</svg>
+				</div>
+				<div id="aus">
+					<svg class="aut" viewBox="0 0 83 127">
+						<path id="aut" d="M 13.30597686767578 -1.56319401867222e-13 C 19.20026588439941 -1.56319401867222e-13 24.38233184814453 3.124361276626587 27.95308876037598 7.557933807373047 C 32.13299942016602 12.74806022644043 32.97721481323242 19.08623695373535 34.67453765869141 25.27194213867188 C 35.51911926269531 28.35030937194824 36.97174453735352 31.40622138977051 39.51736068725586 33.49769973754883 C 41.83273696899414 35.3997688293457 44.7720947265625 35.78039932250977 47.54349899291992 36.7097053527832 C 53.08223342895508 38.56686401367188 57.55467224121094 43.0406379699707 59.32095718383789 48.49948883056641 C 61.47579574584961 55.15817642211914 59.19341659545898 61.87335968017578 59.58641815185547 68.62150573730469 C 59.94716644287109 74.81880187988281 66.05760955810547 78.68522644042969 70.97383880615234 81.65603637695312 C 75.82147979736328 84.58554840087891 80.18862915039062 87.32783508300781 81.64866638183594 93.03475952148438 C 83.19694519042969 99.08755493164062 83.71637725830078 105.8436660766602 81.57192230224609 111.8229446411133 C 78.00153350830078 121.7787399291992 67.55249786376953 126.1626968383789 57.45605087280273 126.8424758911133 C 48.29317092895508 127.4592361450195 36.77190780639648 126.4908142089844 29.89066314697266 119.839729309082 C 25.77304077148438 115.8595886230469 24.28185653686523 110.2931747436523 24.46686363220215 104.755012512207 C 24.5817985534668 101.3112258911133 25.26399040222168 97.89930725097656 26.14602088928223 94.5714111328125 C 26.77111625671387 92.21265411376953 27.61570167541504 89.86404418945312 27.85632133483887 87.42670440673828 C 28.49587631225586 80.94221496582031 22.50259590148926 79.69673919677734 17.4009838104248 77.91635894775391 C 10.91830348968506 75.65357971191406 6.379871368408203 71.37972259521484 3.223990440368652 65.42543792724609 C 0.2850023806095123 59.88147735595703 -0.9481343030929565 53.65810394287109 0.8137013912200928 47.55424880981445 C 1.713527798652649 44.43749237060547 3.345598697662354 41.6097412109375 5.55901575088501 39.20463180541992 C 6.533364295959473 38.14603424072266 7.906647205352783 37.26308822631836 8.78608226776123 36.1508903503418 C 9.606937408447266 35.11221313476562 9.428232192993164 33.76642227172852 9.145344734191895 32.5499267578125 C 7.837315559387207 26.93063926696777 3.761958360671997 22.27759742736816 2.304513931274414 16.6684513092041 C 0.9886985421180725 11.60544300079346 1.766546010971069 5.304206848144531 6.395442962646484 2.037878751754761 C 8.395304679870605 0.6265381574630737 10.8615779876709 0.01557291392236948 13.30597686767578 -1.56319401867222e-13 Z">
+						</path>
+					</svg>
+					<svg class="auu" viewBox="18 14 52 112">
+						<path id="auu" d="M 21.33769035339355 14.64137649536133 C 27.58500671386719 21.29602241516113 29.28310203552246 30.32497406005859 29.78146171569824 39.07615280151367 C 30.06061553955078 43.9833869934082 29.77005958557129 49.15934371948242 31.2118034362793 53.91918182373047 C 32.44537734985352 57.99309158325195 35.33732604980469 61.10728454589844 38.31828308105469 64.050537109375 C 44.31880950927734 69.97544097900391 51.01078414916992 75.99884796142578 52.76588821411133 84.57364654541016 C 53.79570770263672 89.60582733154297 53.10057830810547 94.80352020263672 54.52356719970703 99.78028869628906 C 55.81745910644531 104.3039932250977 58.09556198120117 108.7483978271484 60.86650848388672 112.5684356689453 C 63.0975341796875 115.6445999145508 66.00419616699219 117.9997100830078 68.44302368164062 120.8672790527344 C 69.18706512451172 121.7426147460938 70.2529296875 123.0311660766602 69.94582366943359 124.266845703125 C 69.58648681640625 125.7140274047852 67.74311828613281 126.1721572875977 66.43524932861328 125.9447250366211 C 63.38588333129883 125.4148864746094 60.81906509399414 122.5031433105469 58.82526397705078 120.3863296508789 C 55.90977478027344 117.2909698486328 53.43232727050781 113.9616546630859 51.41866683959961 110.2270812988281 C 49.1832275390625 106.0796585083008 47.38325119018555 101.6787185668945 46.61420059204102 97.02571868896484 C 45.81608963012695 92.19851684570312 46.21330642700195 87.16778564453125 44.39089584350586 82.53506469726562 C 41.32424545288086 74.73998260498047 33.88602066040039 70.13986206054688 28.50816535949707 64.06430053710938 C 21.80772972106934 56.49375915527344 22.80702018737793 47.07150650024414 23.49332046508789 37.75898361206055 C 23.87030792236328 32.64133453369141 24.24508666992188 26.86202239990234 21.65914154052734 22.18946647644043 C 20.67198753356934 20.40583992004395 18.47112083435059 18.74281120300293 18.04668807983398 16.7154541015625 C 17.65793228149414 14.85794734954834 19.77972412109375 12.98088455200195 21.33769035339355 14.64137649536133 Z">
+						</path>
+					</svg>
+				</div>
+				<svg class="auv" viewBox="28 181 78 58">
+					<path id="auv" d="M 28 181 C 28.00037956237793 219.0584869384766 34.21122741699219 239 67.00009155273438 239 C 99.78895568847656 239 105.9998092651367 219.0584869384766 106 181 L 28 181 Z">
+					</path>
+				</svg>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

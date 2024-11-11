@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="31" viewBox="0 0 34 31">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_30" data-name="Rectangle 30" width="34" height="31" transform="translate(0 0)" fill="#dbeadf"/>
+    </clipPath>
+  </defs>
+  <g id="Botao-Resumo_DIário" data-name="Botao-Resumo DIário" transform="translate(0 0.428)">
+    <g id="Group_9" data-name="Group 9" transform="translate(0 -0.428)" clip-path="url(#clip-path)">
+      <path id="Path_95" data-name="Path 95" d="M13.056,37.369H2.789A2.789,2.789,0,0,1,0,34.58V18.922a2.789,2.789,0,0,1,2.789-2.789H13.056a2.789,2.789,0,0,1,2.789,2.789V34.58a2.789,2.789,0,0,1-2.789,2.789" transform="translate(0 -6.772)" fill="#dbeadf"/>
+      <path id="Path_96" data-name="Path 96" d="M47.056,21.236H36.789A2.789,2.789,0,0,1,34,18.447V2.789A2.789,2.789,0,0,1,36.789,0H47.056a2.789,2.789,0,0,1,2.789,2.789V18.447a2.789,2.789,0,0,1-2.789,2.789" transform="translate(-15.423 0.546)" fill="#dbeadf"/>
+      <path id="Path_97" data-name="Path 97" d="M47.056,49.345H36.789A2.789,2.789,0,0,1,34,46.556V45.322a2.789,2.789,0,0,1,2.789-2.789H47.056a2.789,2.789,0,0,1,2.789,2.789v1.234a2.789,2.789,0,0,1-2.789,2.789" transform="translate(-15.423 -18.748)" fill="#dbeadf"/>
+      <path id="Path_98" data-name="Path 98" d="M13.056,6.812H2.789A2.789,2.789,0,0,1,0,4.023V2.789A2.789,2.789,0,0,1,2.789,0H13.056a2.789,2.789,0,0,1,2.789,2.789V4.023a2.789,2.789,0,0,1-2.789,2.789" transform="translate(0 0.546)" fill="#dbeadf"/>
+    </g>
+  </g>
+</svg>

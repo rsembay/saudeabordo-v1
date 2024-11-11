@@ -1,0 +1,88 @@
+.mediaViewInfo {
+    --web-view-name: Erro de Login;
+    --web-view-id: Erro_de_Login;
+    --web-scale-on-resize: true;
+    --web-application: true;
+    --web-enable-deep-linking: true;
+}
+
+:root {
+    --web-view-ids: Erro_de_Login;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Cor de fundo */
+}
+
+#Erro_de_Login {
+    position: relative;
+    width: 430px;
+    height: auto; /* Ajusta a altura conforme o conteúdo */
+    overflow: hidden;
+    padding: 20px; /* Adiciona um pouco de espaço interno */
+
+}
+
+.message {
+    text-align: center;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(112, 112, 112, 1);
+    margin-top: 40px; /* Ajuste conforme necessário */
+}
+
+.illustration {
+    width: 146px; /* Ajuste conforme necessário */
+    margin: 20px auto;
+}
+
+.input-group {
+    position: relative;
+    margin: 20px auto; /* Espaçamento entre os campos */
+}
+
+.input-background {
+    position: absolute;
+    width: 292px;
+    height: 50px;
+}
+
+.input-label {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(34, 34, 34, 1);
+    top: 15px; /* Ajuste a posição do texto */
+}
+
+.link, .register {
+    text-align: center;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(103, 103, 103, 0.973);
+    margin-top: 10px;
+}
+
+.error-message {
+    text-align: center;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 14px;
+    color: rgba(167, 85, 82, 1);
+    margin-top: 20px; /* Ajuste conforme necessário */
+}

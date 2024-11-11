@@ -1,0 +1,49 @@
+:root {
+    --cor-principal: #52A78E;
+    --cor-secundaria: #4B4E6D;
+    --cor-textos: #676767;
+    --cor-fonte-botoes: #FFFFFF;
+    --cor-placeholder: #aaa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    align-items: normal;
+    justify-content: center;
+    background-color: #f0f0f0;
+    color: var(--cor-textos);
+}
+
+.main-container {
+    width: 100%;
+    max-width: 430px;
+    padding: 20px;
+    text-align: center;
+	margin-top: 50%;
+}
+
+.mail-icon {
+    width: 50px; /* Defina um tamanho apropriado para o ícone */
+    margin: 20px 0; /* Espaçamento acima e abaixo do ícone */	
+	
+}
+
+h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 20px;
+    color: var(--cor-principal);
+}
+
+p {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 16px;
+    color: var(--cor-textos);
+    margin: 10px 0; /* Espaçamento acima e abaixo do parágrafo */
+}

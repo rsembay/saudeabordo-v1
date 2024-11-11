@@ -1,0 +1,217 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+:root {
+    --cor-principal: #52A78E;
+    --cor-secundaria: #4B4E6D;
+    --cor-textos: #676767;
+    --cor-fonte-botoes: #FFFFFF;
+    --cor-placeholder: #aaa;
+    --cor-label-ativa: #52A78E;
+    --cor-borda-input: #ddd;
+    --cor-borda-input-focus: #52A78E;
+    --cor-fundo-form: #f9f9f9;
+    --sombra-form: rgba(0, 0, 0, 0.1);
+    --cor-link: #52A78E;
+    --cor-link-hover: #4B4E6D;
+}
+
+
+.body, html {
+	background: url(/img/saude-a-bordo-bg.png);
+	font-family: fredoka;
+}
+
+/* Seção do Topo */
+#top-section {
+    width: 100%;
+    background-color: #fff; /* Fundo branco */
+    padding: 10px 10px;
+	margin-bottom: 10px;
+}
+
+.top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botão Voltar */
+#back-button {
+    padding: 12px 20px;
+	font-family: fredoka;
+    color: var(--cor-placeholder);
+	background-color: #fff;
+    border-style: solid;
+	border-color: var(--cor);
+	border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#back-button:hover {
+    background-color:#52a76e;
+	color: #fff;
+}
+
+/* Estilo do usuário logado */
+#user-info {
+	display: flex;
+	align-items: center;
+    font-size: 16px;
+    font-family: Fredoka, sans-serif;
+    color: rgba(112, 112, 112, 1);
+}
+
+#user-name {
+	padding: 10px;
+}
+
+/* Main container */
+.container {
+    width: 100%;
+    max-width: 430px;
+    background-color: #fff; /* Fundo branco */
+    overflow: hidden;
+    padding: 20px;
+    margin: 100px auto; /* Centraliza o container e adiciona 100px de margem no topo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    border-radius: 16px;
+}
+
+/* Title Section */
+#aac {
+    font-family: Fredoka, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(112, 112, 112, 1);
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Description Section */
+#aad {
+    font-family: Fredoka, sans-serif;
+    font-size: 14px;
+    color: rgba(112, 112, 112, 1);
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+/* Form container */
+#aae {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Fields */
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 16px;
+    color: rgba(112, 112, 112, 1);
+    margin-bottom: 8px;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: rgba(249, 249, 249, 1);
+    transition: border-color 0.3s;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: #52A78E;
+    outline: none;
+}
+
+/* Textarea */
+.form-field textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+/* Buttons Section */
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.cancel-btn,
+.add-btn {
+    padding: 14px 20px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 48%;
+}
+
+.cancel-btn {
+    background-color: #ddd;
+}
+
+.cancel-btn:hover {
+    background-color: #bbb;
+}
+
+.add-btn {
+    background-color: #52A78E;
+}
+
+.add-btn:hover {
+    background-color: #4B4E6D;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+    #RegAtividAnotaes {
+        padding: 15px;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .cancel-btn,
+    .add-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .form-buttons button:last-child {
+        margin-bottom: 0;
+    }
+}

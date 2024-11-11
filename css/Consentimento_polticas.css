@@ -1,0 +1,75 @@
+:root {
+    --cor-principal: #52A78E;
+    --cor-secundaria: #4B4E6D;
+    --cor-textos: #676767;
+    --cor-fonte-botoes: #FFFFFF;
+    --cor-placeholder: #aaa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    color: var(--cor-textos);
+}
+
+.main-container {
+    width: 100%;
+    max-width: 430px;
+    padding: 20px;
+
+}
+
+.policy-section {
+    margin-bottom: 20px;
+}
+
+.policy-section h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 20px;
+    color: var(--cor-secundaria);
+}
+
+.policy-section p {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 13px;
+    color: var(--cor-textos);
+    margin: 10px 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 16px;
+    color: var(--cor-textos);
+}
+
+.checkbox-label input {
+    margin-right: 10px;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--cor-principal);
+    color: var(--cor-fonte-botoes);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--cor-secundaria);
+}

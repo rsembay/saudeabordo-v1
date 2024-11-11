@@ -1,0 +1,198 @@
+/* Definições gerais */
+:root {
+    --cor-principal: #52A78E;
+    --cor-secundaria: #4B4E6D;
+    --cor-textos: #676767;
+    --cor-fonte-botoes: #FFFFFF;
+    --cor-placeholder: #aaa;
+    --cor-label-ativa: #52A78E;
+    --cor-borda-input: #ddd;
+    --cor-borda-input-focus: #52A78E;
+    --cor-fundo-form: #f9f9f9;
+    --sombra-form: rgba(0, 0, 0, 0.1);
+    --cor-link: #52A78E;
+    --cor-link-hover: #4B4E6D;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url(/img/saude-a-bordo-bg.png);
+    font-family: Fredoka;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    color: var(--cor-textos);
+}
+
+/* Seção do Topo */
+#top-section {
+    width: 100%;
+    background-color: #fff; /* Fundo branco */
+    padding: 10px 10px;
+	margin-bottom: 10px;
+}
+
+.top-container {
+    display: flexbox;
+    justify-content: space-between;
+    align-items:center;
+}
+
+/* Botão Voltar */
+#back-button {
+    padding: 12px 20px;
+	font-family: fredoka;
+    color: var(--cor-placeholder);
+	background-color: #fff;
+    border-style: solid;
+	border-color: var(--cor-placeholder);
+	border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#back-button:hover {
+    background-color:#52a76e;
+	color: #fff;
+}
+
+/* Estilo do usuário logado */
+#user-info {
+	display: flex;
+	align-items;
+    justify-content:end;
+    font-size: 16px;
+    font-family: Fredoka, sans-serif;
+    color: rgba(112, 112, 112, 1);
+}
+
+#user-name {
+	padding: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #Principal__Registro_de_Atividades {
+        padding: 10px;
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+    }
+
+    .icon-img {
+        display: block;
+        margin: 10px auto;
+    }
+
+    .activity-box {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+/* Estilo específico para os elementos */
+#Principal__Registro_de_Atividades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 430px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 100px auto;
+}
+
+.box-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.icon-img {
+    margin-right: 15px;
+}
+
+.icon-img img {
+    max-width: 50px;
+    height: auto;
+}
+
+.activity-box {
+    width: 100%;
+    max-width: 344px;
+    background-color: #d8f4eb;
+    border-radius: 21px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.activity-box .text {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Rodapé com ícones de botões dentro da div principal */
+#aaa {
+    width: 100%;
+    background-color: var(--cor-principal);
+    padding: 10px 0;
+    margin-top: 20px; /* Ajustado para espaçar do conteúdo acima */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Contêiner de ícones do rodapé */
+#button-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+	flex-wrap: wrap;
+}
+
+.footer-icon {
+    width: 5%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	margin: 5px;
+}
+
+.footer-icon a {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.footer-icon img {
+    width: 100%;
+    height: auto;
+}
+
+/* Responsividade para os ícones no rodapé */
+@media (max-width: 768px) {
+    #button-container {
+        justify-content:space-around;
+    }
+
+    .footer-icon {
+        width: 5%;
+        height: auto;
+    }
+}

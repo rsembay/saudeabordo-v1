@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reg.Ativid–SolicitarAcompanhamento-Enviar</title>
+    <link rel="stylesheet" type="text/css" href="/css/RegAtividSolicitarAcompanhamento-Enviar.css"/>
+    <script type="text/javascript" src="/js/RegAtividSolicitarAcompanhamento-Enviar.js"></script>
+</head>
+<body>
+    <div id="RegAtividSolicitarAcompanhamento-Enviar">
+        <!-- Topo da página com a identificação do usuário e botão de voltar -->
+        <div id="top-section">
+            <div class="top-container">
+                <button id="back-button" onclick="window.history.back();">Voltar</button>
+                <div id="user-info">
+                    <span id="user-name">Luma Assis</span>
+                    <img id="user-image" src="/img/User ID.svg" alt="Luma" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão Cancelar -->
+        <div class="cancel-button">
+                       <div class="button-text">
+                <span>Cancelar</span>
+            </div>
+        </div>
+
+        <!-- Título -->
+        <div class="title">
+            <span>Compartilhar com</span>
+        </div>
+
+        <!-- Caixa Azul Claro com o formulário -->
+        <div class="form-container">
+            <div class="input-container">
+                <input type="text" id="input-name" placeholder="Adicionar Nome" />
+            </div>
+            <div class="input-container">
+                <input type="text" id="input-whatsapp" placeholder="Inserir WhatsApp" />
+            </div>
+            <div class="input-container">
+                <input type="text" id="input-search" placeholder="Ou busque por contatos já cadastrados" />
+            </div>
+            <div class="input-container">
+                <select id="emergency-select">
+                    <option value="nao">Sinalizar emergência?</option>
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Botão Enviar -->
+        <div class="submit-button">
+            <button class="botao-compartilhar">Enviar para um Profissional</button>
+        </div>
+    </div>
+</body>
+</html>

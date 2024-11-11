@@ -1,0 +1,140 @@
+:root {
+    --cor-principal: #52A78E;
+    --cor-secundaria: #4B4E6D;
+    --cor-textos: #676767;
+    --cor-fonte-botoes: #FFFFFF;
+    --cor-placeholder: #aaa;
+    --cor-label-ativa: #52A78E;
+    --cor-borda-input: #ddd;
+    --cor-borda-input-focus: #52A78E;
+    --cor-fundo-form: #f9f9f9;
+    --sombra-form: rgba(0, 0, 0, 0.1);
+    --cor-link: #52A78E;
+    --cor-link-hover: #4B4E6D;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fredoka', sans-serif;
+}
+
+body, html {
+    background: url(/img/saude-a-bordo-bg.png);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    color: var(--cor-textos);
+}
+
+.Index_Class {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para dar destaque */
+    text-align: center;
+    padding: 40px;
+    width: 100%;
+    max-width: 430px; /* Mantém a largura máxima */
+}
+
+.logo_SaudeABordo_Home {
+    width: 50%; /* Ajuste a largura da logo */
+    height: auto; /* Mantém a proporção */
+    margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+.titulo_Principal {
+    font-size: 26px; /* Tamanho da fonte principal */
+    margin: 20px 0; /* Margem para espaçamento */
+	font-weight: 600;
+}
+
+.subtitulo {
+    font-size: 20px; /* Tamanho da fonte do subtítulo */
+    margin-bottom: 30px; /* Margem inferior para espaçamento */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os botões */
+    width: 100%; /* Largura total */
+}
+
+.botao_Login,
+.botao_CadastreSe {
+    width: 100%; /* Largura total */
+    max-width: 292px; /* Limite máximo */
+    padding: 0.8rem;
+    background-color: var(--cor-principal);
+    color: var(--cor-fonte-botoes);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px 0; /* Espaçamento entre os botões */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.botao_CadastreSe-home {
+	width: 100%; /* Largura total */
+    max-width: 292px; /* Limite máximo */
+    padding: 0.8rem;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-fonte-botoes);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px 0; /* Espaçamento entre os botões */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.botao_CadastreSe-home:hover {
+    background-color: var(--cor-principal); /* Cor ao passar o mouse */
+    color: var(--cor-link-hover)
+}
+
+.botao_Login:hover,
+.botao_CadastreSe:hover {
+    background-color: var(--cor-secundaria); /* Cor ao passar o mouse */
+    color: var(--cor-placeholder)
+}
+
+/* Links e textos adicionais */
+.link {
+    color: var(--cor-link);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: var(--cor-link-hover);
+    text-decoration: underline;
+}
+
+/* Media Queries para melhorar a responsividade */
+@media (max-width: 600px) {
+    .titulo_Principal {
+        font-size: 22px; /* Tamanho da fonte menor em telas pequenas */
+    }
+    
+    .subtitulo {
+        font-size: 18px; /* Tamanho da fonte menor em telas pequenas */
+    }
+    
+    .logo_SaudeABordo_Home {
+        width: 40%; /* Aumenta a largura em telas pequenas */
+    }
+
+    .botao_Login, .botao_CadastreSe {
+        max-width: 90%; /* Largura máxima em telas pequenas */
+    }
+}

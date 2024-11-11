@@ -1,0 +1,147 @@
+:root {
+    --cor-principal: #52A78E;
+    --cor-secundaria: #4B4E6D;
+    --cor-textos: #676767;
+    --cor-fonte-botoes: #FFFFFF;
+    --cor-placeholder: #aaa;
+    --cor-label-ativa: #52A78E;
+    --cor-borda-input: #ddd;
+    --cor-borda-input-focus: #52A78E;
+    --cor-fundo-form: #f9f9f9;
+    --sombra-form: rgba(0, 0, 0, 0.1);
+    --cor-link: #52A78E;
+    --cor-link-hover: #4B4E6D;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fredoka', sans-serif;
+}
+
+body, html {
+    background: url(/img/saude-a-bordo-bg.png);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    color: var(--cor-textos);
+}
+
+.main-container {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.illustration {
+    width: 100px;
+    margin: 20px 0;
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    background: none;
+    color: var(--cor-textos);
+}
+
+.input-group input:focus {
+    border-color: var(--cor-borda-input-focus);
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 0.8rem;
+    transform: translateY(-50%);
+    padding: 0 0.2rem;
+    color: var(--cor-placeholder);
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -0.6rem;
+    left: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--cor-label-ativa);
+}
+
+.password-container {
+    position: relative;
+}
+
+.show-password-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    cursor: pointer;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--cor-principal);
+    color: var(--cor-fonte-botoes);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-placeholder);
+}
+
+.link {
+    color: var(--cor-link);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.link:hover {
+    color: var(--cor-link-hover);
+    text-decoration: underline;
+}
+
+p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}

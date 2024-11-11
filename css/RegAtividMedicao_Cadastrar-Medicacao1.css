@@ -1,0 +1,206 @@
+:root {
+    --cor-principal: #52A78E;
+    --cor-secundaria: #4B4E6D;
+    --cor-textos: #676767;
+    --cor-fonte-botoes: #FFFFFF;
+    --cor-placeholder: #aaa;
+    --cor-label-ativa: #52A78E;
+    --cor-borda-input: #ddd;
+    --cor-borda-input-focus: #52A78E;
+    --cor-fundo-form: #f9f9f9;
+    --sombra-form: rgba(0, 0, 0, 0.1);
+    --cor-link: #52A78E;
+    --cor-link-hover: #4B4E6D;
+}
+
+/* Reset global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body, html {
+    background: url(/img/saude-a-bordo-bg.png);
+    font-family: Fredoka, sans-serif;
+}
+
+/* Seção do Topo */
+#top-section {
+    width: 100%;
+    background-color: #fff; /* Fundo branco */
+    padding: 10px 10px;
+    margin-bottom: 10px;
+}
+
+.top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botão Voltar */
+#back-button {
+    padding: 12px 20px;
+    color: var(--cor-placeholder);
+    background-color: #fff;
+    border: 1px solid var(--cor-placeholder);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#back-button:hover {
+    background-color: var(--cor-principal);
+    color: #fff;
+}
+
+/* Estilo do usuário logado */
+#user-info {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: rgba(112, 112, 112, 1);
+}
+
+#user-name {
+    padding: 10px;
+}
+
+/* Seção do formulário */
+#form-section {
+    width: 100%;
+    max-width: 450px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Títulos */
+.section-title {
+    text-align: center;
+    font-size: 18px;
+    color: var(--cor-textos);
+    margin-bottom: 10px;
+}
+
+.section-description, .section-info, .privacy-note {
+    text-align: center;
+    font-size: 14px;
+    color: var(--cor-textos);
+    margin-bottom: 12px;
+}
+
+/* Estilo dos campos do formulário */
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 14px;
+    color: var(--cor-textos);
+    margin-bottom: 5px;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 8px;
+    background-color: var(--cor-fundo-form);
+    transition: border-color 0.3s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: var(--cor-borda-input-focus);
+    outline: none;
+}
+
+/* Adicionando o campo de Intensidade */
+.intensidade-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.intensidade-field input {
+    width: 60%;
+}
+
+/* Botões de Ação */
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.cancel-btn,
+.add-btn {
+    padding: 14px 20px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 48%;
+}
+
+.cancel-btn {
+    background-color: #ddd;
+}
+
+.cancel-btn:hover {
+    background-color: #bbb;
+}
+
+.add-btn {
+    background-color: var(--cor-principal);
+}
+
+.add-btn:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #form-section {
+        padding: 15px;
+    }
+
+    #form-section h1 {
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 16px;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .cancel-btn,
+    .add-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .form-buttons button:last-child {
+        margin-bottom: 0;
+    }
+}

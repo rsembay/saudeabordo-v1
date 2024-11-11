@@ -1,0 +1,185 @@
+/* Reset global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-principal: #52A78E;
+    --cor-secundaria: #4B4E6D;
+    --cor-textos: #676767;
+    --cor-fonte-botoes: #FFFFFF;
+    --cor-placeholder: #aaa;
+    --cor-label-ativa: #52A78E;
+    --cor-borda-input: #ddd;
+    --cor-borda-input-focus: #52A78E;
+    --cor-fundo-form: #f9f9f9;
+    --sombra-form: rgba(0, 0, 0, 0.1);
+    --cor-link: #52A78E;
+    --cor-link-hover: #4B4E6D;
+}
+
+body, html {
+    background: url(/img/saude-a-bordo-bg.png);
+	background-color: #fff;
+    font-family: fredoka;
+}
+
+/* Container principal */
+#container {
+    width: 100%;
+    max-width: 430px;
+    background-color: #fff;
+    padding: 30px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    position: relative;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Seção do Topo */
+/* Seção do Topo */
+#top-section {
+    width: 100%;
+    background-color: #fff; /* Fundo branco */
+    padding: 10px 10px;
+	margin-bottom: 10px;
+}
+
+.top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botão Voltar */
+#back-button {
+	width: 100px;
+    padding: 12px 20px;
+	font-family: fredoka;
+    color: var(--cor-placeholder);
+	background-color: #fff;
+    border-style: solid;
+	border-color: var(--cor-placeholder);
+	border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#back-button:hover {
+    background-color:#52a76e;
+	color: #fff;
+}
+
+/* Estilo do usuário logado */
+#user-info {
+	display: flex;
+	align-items: center;
+    font-size: 16px;
+    font-family: Fredoka, sans-serif;
+    color: rgba(112, 112, 112, 1);
+}
+
+#user-name {
+	padding: 10px;
+}
+/* Título do formulário */
+h1 {
+    font-size: 18px;
+    text-align: center;
+    color: var(--cor-textos);
+    margin-bottom: 20px;
+}
+
+/* Estilo dos campos do formulário */
+.form-group {
+    width: 100%;
+	max-width: 430px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 15px;
+    font-family: Fredoka, sans-serif;
+    color: rgba(112, 112, 112, 1);
+    margin-bottom: 5px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 8px;
+    background-color: var(--cor-fundo-form);
+    transition: border-color 0.3s ease;
+}
+
+/* Foco nos campos de entrada */
+.input-field:focus {
+    border-color: var(--cor-borda-input-focus);
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    height: 120px;
+}
+
+/* Estilo dos botões */
+button {
+    padding: 14px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: var(--cor-principal);
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* Botões específicos */
+.btn-cancelar {
+    background-color: #ddd;
+}
+
+.btn-cancelar:hover {
+    background-color: #bbb;
+}
+
+.btn-adicionar {
+    background-color: var(--cor-principal);
+}
+
+.btn-adicionar:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    #container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

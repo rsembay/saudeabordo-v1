@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="35" viewBox="0 0 36 35">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_31" data-name="Rectangle 31" width="36" height="35" transform="translate(0 -0.459)" fill="#dbeadf"/>
+    </clipPath>
+  </defs>
+  <g id="Botao-Graficos" transform="translate(-36 0.459)">
+    <g id="Group_11" data-name="Group 11" transform="translate(36)" clip-path="url(#clip-path)">
+      <path id="Path_99" data-name="Path 99" d="M22.892,52H21.432A2.433,2.433,0,0,1,19,49.568V36.432A2.433,2.433,0,0,1,21.432,34h1.459a2.433,2.433,0,0,1,2.432,2.432V49.568A2.433,2.433,0,0,1,22.892,52" transform="translate(-9.757 -17.459)" fill="#dbeadf"/>
+      <path id="Path_100" data-name="Path 100" d="M3.892,44.811H2.432A2.433,2.433,0,0,1,0,42.378V22.432A2.433,2.433,0,0,1,2.432,20H3.892a2.433,2.433,0,0,1,2.432,2.432V42.378a2.433,2.433,0,0,1-2.432,2.432" transform="translate(0 -10.27)" fill="#dbeadf"/>
+      <path id="Path_101" data-name="Path 101" d="M43.892,42.757H42.432A2.433,2.433,0,0,1,40,40.324V18.432A2.433,2.433,0,0,1,42.432,16h1.459a2.433,2.433,0,0,1,2.432,2.432V40.324a2.433,2.433,0,0,1-2.432,2.432" transform="translate(-20.541 -8.216)" fill="#dbeadf"/>
+      <path id="Path_102" data-name="Path 102" d="M64.892,0a2.433,2.433,0,0,1,2.432,2.432V32.108a2.433,2.433,0,0,1-2.432,2.432H63.432A2.433,2.433,0,0,1,61,32.108V2.432A2.433,2.433,0,0,1,63.432,0" transform="translate(-31.324)" fill="#dbeadf"/>
+    </g>
+  </g>
+</svg>
